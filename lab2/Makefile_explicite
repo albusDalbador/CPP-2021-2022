@@ -1,0 +1,53 @@
+CC = g++
+
+## CFLAGS = -O0 ...  # tutaj można dodawać inne flagi kompilatora
+# -O optimizing code
+# -Wall every warning is shown by the compiler that is about some aspect of the code that is not perfectly stated
+# -E nothing is done except preprocessing.
+# -D predefine name as a macro, with definition 1
+# -DNDEBUG in the final program version all assert methods will disappaer
+# -g debugging option
+# -std=c++11
+# Complete list: 
+# https://gcc.gnu.org/onlinedocs/gcc/Preprocessor-Options.html
+LIBS = -lm # tutaj można dodawać biblioteki
+
+all: main #run
+
+main: Main.o
+	$(CC) $(CFLAGS) Main.o Suma2.o Suma1.o Iloczyn.o Iloczyn1.o Iloczyn2.o Kwadrat1.o PolozeniePoczatkowe.o Przyspieszenie.o -o main
+
+Main.o: Main.cpp Suma2.o PolozeniePoczatkowe.o Czas.h Przyspieszenie.o Predkosc.h
+	$(CC) $(CFLAGS) Main.cpp -c -o Main.o
+
+Suma1.o: Suma1.cpp Suma1.h Suma.h Iloczyn1.o Iloczyn2.o
+	$(CC) $(CFLAGS) Suma1.cpp -c -o Suma1.o
+
+Suma2.o: Suma2.cpp Suma2.h Suma1.o PolozeniePoczatkowe.o
+	$(CC) $(CFLAGS) Suma2.cpp -c -o Suma2.o
+
+Iloczyn.o: Iloczyn.cpp Iloczyn.h
+	$(CC) $(CFLAGS) Iloczyn.cpp -c -o Iloczyn.o
+
+Iloczyn1.o: Iloczyn1.cpp Iloczyn1.h Iloczyn.o Czas.h Predkosc.h
+	$(CC) $(CFLAGS) Iloczyn1.cpp -c -o Iloczyn1.o
+
+Iloczyn2.o: Iloczyn2.cpp Iloczyn2.h Przyspieszenie.o Kwadrat1.o
+	$(CC) $(CFLAGS) Iloczyn2.cpp -c -o Iloczyn2.o
+
+Kwadrat1.o: Kwadrat1.cpp Kwadrat1.h Kwadrat.h Czas.h
+	$(CC) $(CFLAGS) Kwadrat1.cpp -c -o Kwadrat1.o
+
+Przyspieszenie.o: Przyspieszenie.cpp Przyspieszenie.h
+	$(CC) $(CFLAGS) Przyspieszenie.cpp -c -o Przyspieszenie.o
+
+PolozeniePoczatkowe.o: PolozeniePoczatkowe.cpp PolozeniePoczatkowe.h
+	$(CC) $(CFLAGS) PolozeniePoczatkowe.cpp -c -o PolozeniePoczatkowe.o
+
+clean:
+	@echo Usuwam gotowe pliki
+	@rm -f *.o main
+
+run:
+	./main
+
