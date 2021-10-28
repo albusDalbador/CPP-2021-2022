@@ -1,24 +1,33 @@
 
-CC = g++
+# CC = g++
 
-LIBS = -lm
+# LIBS = -lm
 
-all:main 
+# # .DEFAULT_GOAL := clean
 
-main: main.o
-	$(CC) $(CFLAGS) main.o -o main
+# # .PHONY = clean all
 
-main.o: main.cpp
-	$(CC) $(CFLAGS) main.cpp -c -o main.o
+# all: main 
+
+# main: main.o
+# 	$(CC) $(CFLAGS) main.o -o main
+
+# main.o: main.cpp
+# 	$(CC) $(CFLAGS) main.cpp -c -o main.o
 
 
-clean:
-	@echo Removing old files
-	@rm -f *.o main
 
-run:
-	./main
-OUPUT = main
+# clean:
+# 	@echo Removing old files
+# 	@rm -f *.o main
+
+# run:
+# 	./main
+
+# printSomeStuf:
+# 	@echo $(CFLAGS)
+
+# OUPUT = main
 
 
 #second variant
@@ -47,6 +56,30 @@ OUPUT = main
 # run:
 # 	./main
 
+#third variant
+
+.PHONY = all clean
+
+CC = g++                        # compiler to use
+
+LINKERFLAG = -lm
+
+SRCS := $(wildcard *.cpp)
+BINS := $(SRCS:%.cpp=%)
+
+all: ${BINS}
+
+%: %.o
+	@echo "Checking.."
+	${CC} ${LINKERFLAG} $< -o $@
+
+%.o: %.cpp
+	@echo "Creating object.."
+	${CC} -c $<
+
+clean:
+	@echo "Cleaning up..."
+	rm -rvf *.o ${BINS}
 
 
  

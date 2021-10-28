@@ -24,6 +24,7 @@
 */
 
 #include <iostream>
+#include <stdlib.h>
 
 // #define SEGFAULT
 
@@ -31,13 +32,7 @@ int main() {
   char str1[]="kajak";
   char *str2;
 
-  // str2 = "kajak"; //bez alokacji pamięci nie powinniśmy tego zrobić   
- 
-  *(str1+2)='a'; 
   
-  #ifdef SEGFAULT
-    *(str2+2)='a';
-  #endif
   //wypisywanie w pętli dla debugera
   for (int i=0; i<5;i++)
     std::cout << *(str1+i);
