@@ -1,16 +1,17 @@
 OUTPUT = main
 
 CXX=g++
-#CXXFLAGS+=-Wall -O0 $(GXX_FLAGS) -std=c++11
+CXXFLAGS+=-Wall -O0 $(GXX_FLAGS) -std=c++11
 #CXXFLAGS+=-g
-CXXFLAGS+=-E
+# CXXFLAGS+=-E
 
 #Dependency for the output file
 #DEP_FLAGS=-MMD
-#DEP_FLAGS+=-MP
+#DEP_FLAGS+=-MP 
 
 SRC=$(wildcard *.cpp)
-OBJ=$(SRC:.cpp=.o)
+OBJ=$(patsubst %.cpp, %.o, $(SRC)) 
+# OBJ=$(SRC:.cpp=.o) #shorthand of of above expression
 DEP=${SRC:.cpp=.d}
 
 #Add dependency generation to the compiler options
@@ -29,9 +30,15 @@ $(OUTPUT): $(OBJ)
 .PHONY: clean run
 
 clean:
-	@rm -f run $(OBJ) *.d
+	@echo Cleaning up...
+	@rm -f run $(OBJ) *.d $(OUTPUT)
 
 -include $(DEP) 
 
 run:
 	./main
+
+# depend:
+# 	@echo $(word 1, $(DEP))
+# 	@cat $(word 1, $(DEP))
+# just the way to print certain word from $(DEP)
