@@ -3,7 +3,8 @@
 #include <cstring>
 
 
-char up2low_low2up(char symbol) {
+int up2low_low2up(int symbol) {
+    if ((char)symbol == ' ') return ' ';
     return symbol >= 97 ? symbol - 32 : symbol + 32;
 }
 
@@ -68,6 +69,33 @@ MyText *initMyText(char *newName) {
     strcpy( newItem->name,newName);
 
     return newItem;
+}
+
+MyText *initMyText(char *newName, MyText *oldItem) {
+    MyText *newItem = new MyText;
+
+    newItem->text = NULL;
+    newItem->name = NULL;
+
+    newItem->name = new char [getStringLen(newName)];
+    
+    strcpy( newItem->name,newName);
+
+    if (oldItem->text) {
+        newItem->text = new char[getStringLen(oldItem->text)];
+
+        strcpy(newItem->text,oldItem->text);
+    }
+
+    return newItem;
+}
+
+void modify(MyText *item, int (*func)(int)) {
+    if (item->text) {
+        for (int i = 0; i < getStringLen(item->text); i++) {
+            item->text[i] = func(item->text[i]);
+        }
+    }
 }
 
 void printStr(char *str) {
@@ -137,4 +165,13 @@ int getStringLen(char *str) {
     } 
 
     return result;
+}
+
+void clear(MyText *item) {
+    if (item->name)
+    delete [] item->text;
+    if (item->text)
+    delete [] item-> name;
+
+    // delete item;
 }

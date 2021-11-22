@@ -78,24 +78,24 @@ int main()
     std::cout << "rozmiar(text) = " << size(text) << std::endl;
     std::cout << "----------------------" << std::endl;
 
-// #ifndef BASIC
-//     MyText * copy = initMyText("Tekst_2", text);
-//     print(copy);
-//     modify(copy, std::toupper);
-//     print(copy);
-//     modify(copy, std::tolower);
-//     print(copy);
+#ifndef BASIC
+    MyText * copy = initMyText("Tekst_2", text);
+    print(copy);
+    modify(copy, std::toupper);
+    print(copy);
+    modify(copy, std::tolower);
+    print(copy);
     
-//     std::cout << "Zmieniamy  Tekst_1" << std::endl;
-//     print(text);
-//     modify(text, up2low_low2up);
-//     print(text);
+    std::cout << "Zmieniamy  Tekst_1" << std::endl;
+    print(text);
+    modify(text, up2low_low2up);
+    print(text);
 
-//     std::cout << "----------------------" << std::endl;
-//     clear(copy);
-// #endif
+    std::cout << "----------------------" << std::endl;
+    clear(copy);
+#endif
 
-//     clear(text);
+    clear(text);
 
 // #ifndef BASIC
 //     std::cout << "I jeszcze raz... Dla pewnosci." << std::endl;

@@ -6,7 +6,8 @@ struct MyText {
     char *name;
 };
 
-char up2low_low2up(char);
+//zmienia podany symbol na uppercase, w przypadku, gdy przekazano lowercase i odwrotnie
+int up2low_low2up(int);
 
 //funkcja wypisuje lanuch znakow, przechowywanych pod podanym adresem
 void printStr(char *);
@@ -23,7 +24,11 @@ MyText* append(MyText*,char*);
 //funkcja zwraca "false", jezeli pole "text" w przekazanej strukturze nie jest puste i "true" w przeciwnym wypadku
 bool empty(MyText*);
 
+//funkca tworzy strukture o podanej nazwie i zwraca wskaznik do niej
 MyText *initMyText(char *) ;
+
+//tworzy strukture o podanej nazwie i zapisuje do pola text wartosc, przechowywana w przekazanej strukturze
+MyText *initMyText(char*,MyText *);
 
 //funkcja pomocnicza do kopiowania ciagu znakow, prechowywanych pod adresem "src" do "dst"
 void copyStr(char*,char*);
@@ -42,3 +47,9 @@ void erase(MyText *, int ,int);
  
 //dodaje do tekstu podany lancuch zaczynajac od podanej pozycji
 void insert(MyText *,int,char*);
+
+//zminia text w przekazanej strukturze uzywajac przekazanej funkcji
+void modify(MyText *, int (*)(int));
+
+//dealokuje pamiec zajmowana przez przekazana stukture
+void clear(MyText *);
