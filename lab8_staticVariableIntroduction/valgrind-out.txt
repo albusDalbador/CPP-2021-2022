@@ -1,0 +1,227 @@
+==9655== Memcheck, a memory error detector
+==9655== Copyright (C) 2002-2017, and GNU GPL'd, by Julian Seward et al.
+==9655== Using Valgrind-3.18.1-42b08ed5bd-20211015 and LibVEX; rerun with -h for copyright info
+==9655== Command: ./main
+==9655== Parent PID: 9654
+==9655== 
+--9655-- 
+--9655-- Valgrind options:
+--9655--    --leak-check=full
+--9655--    --show-leak-kinds=all
+--9655--    --track-origins=yes
+--9655--    --verbose
+--9655--    --log-file=valgrind-out.txt
+--9655-- Contents of /proc/version:
+--9655--   Linux version 5.15.4-201.fc35.x86_64 (mockbuild@bkernel01.iad2.fedoraproject.org) (gcc (GCC) 11.2.1 20210728 (Red Hat 11.2.1-1), GNU ld version 2.37-10.fc35) #1 SMP Tue Nov 23 18:54:50 UTC 2021
+--9655-- 
+--9655-- Arch and hwcaps: AMD64, LittleEndian, amd64-cx16-lzcnt-rdtscp-sse3-ssse3-avx-avx2-bmi-f16c-rdrand-rdseed
+--9655-- Page sizes: currently 4096, max supported 4096
+--9655-- Valgrind library directory: /usr/libexec/valgrind
+--9655-- Reading syms from /home/mihas/Projects/CPP-2021-2022/lab8_staticVariableIntroduction/main
+==9655== Downloading debug info for /home/mihas/Projects/CPP-2021-2022/lab8_staticVariableIntroduction/main...
+==9655== Server query failed: No such file or directory
+--9655-- Reading syms from /usr/lib64/ld-linux-x86-64.so.2
+--9655-- Warning: cross-CU LIMITATION: some inlined fn names
+--9655-- might be shown as UnknownInlinedFun
+--9655-- Reading syms from /usr/libexec/valgrind/memcheck-amd64-linux
+==9655== Downloading debug info for /usr/libexec/valgrind/memcheck-amd64-linux...
+--9655--   Considering /home/mihas/.cache/debuginfod_client/7bdaf38e73355565f331345c3b57d7f59ce83fea/debuginfo ..
+--9655--   .. CRC is valid
+==9655== Successfully downloaded debug file for /usr/libexec/valgrind/memcheck-amd64-linux
+==9655== Downloading debug info for /home/mihas/.cache/debuginfod_client/7bdaf38e73355565f331345c3b57d7f59ce83fea/debuginfo...
+--9655--   Considering /home/mihas/.cache/debuginfod_client/dcc60dbdbbc9956b4b2e93565590c2bd3f4b4542/debuginfo ..
+--9655--   .. build-id is valid
+==9655== Successfully downloaded debug file for /home/mihas/.cache/debuginfod_client/7bdaf38e73355565f331345c3b57d7f59ce83fea/debuginfo
+--9655--    object doesn't have a dynamic symbol table
+--9655-- Scheduler: using generic scheduler lock implementation.
+--9655-- Reading suppressions file: /usr/libexec/valgrind/default.supp
+==9655== embedded gdbserver: reading from /tmp/vgdb-pipe-from-vgdb-to-9655-by-mihas-on-fedora.home
+==9655== embedded gdbserver: writing to   /tmp/vgdb-pipe-to-vgdb-from-9655-by-mihas-on-fedora.home
+==9655== embedded gdbserver: shared mem   /tmp/vgdb-pipe-shared-mem-vgdb-9655-by-mihas-on-fedora.home
+==9655== 
+==9655== TO CONTROL THIS PROCESS USING vgdb (which you probably
+==9655== don't want to do, unless you know exactly what you're doing,
+==9655== or are doing some strange experiment):
+==9655==   /usr/libexec/valgrind/../../bin/vgdb --pid=9655 ...command...
+==9655== 
+==9655== TO DEBUG THIS PROCESS USING GDB: start GDB like this
+==9655==   /path/to/gdb ./main
+==9655== and then give GDB the following command
+==9655==   target remote | /usr/libexec/valgrind/../../bin/vgdb --pid=9655
+==9655== --pid is optional if only one valgrind process is running
+==9655== 
+--9655-- REDIR: 0x4025990 (ld-linux-x86-64.so.2:strlen) redirected to 0x580bd0a2 (vgPlain_amd64_linux_REDIR_FOR_strlen)
+--9655-- REDIR: 0x4025760 (ld-linux-x86-64.so.2:index) redirected to 0x580bd0bc (vgPlain_amd64_linux_REDIR_FOR_index)
+--9655-- Reading syms from /usr/libexec/valgrind/vgpreload_core-amd64-linux.so
+--9655-- Reading syms from /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so
+==9655== WARNING: new redirection conflicts with existing -- ignoring it
+--9655--     old: 0x04025990 (strlen              ) R-> (0000.0) 0x580bd0a2 vgPlain_amd64_linux_REDIR_FOR_strlen
+--9655--     new: 0x04025990 (strlen              ) R-> (2007.0) 0x04847710 strlen
+--9655-- REDIR: 0x4022170 (ld-linux-x86-64.so.2:strcmp) redirected to 0x48485b0 (strcmp)
+--9655-- REDIR: 0x4025ef0 (ld-linux-x86-64.so.2:mempcpy) redirected to 0x484c120 (mempcpy)
+--9655-- Reading syms from /usr/lib64/libstdc++.so.6.0.29
+==9655== Downloading debug info for /usr/lib64/libstdc++.so.6.0.29...
+--9655--   Considering /home/mihas/.cache/debuginfod_client/ee39599366a0d94a90b4d1b74bd39bb6ce9e4cea/debuginfo ..
+--9655--   .. CRC is valid
+==9655== Successfully downloaded debug file for /usr/lib64/libstdc++.so.6.0.29
+==9655== Downloading debug info for /home/mihas/.cache/debuginfod_client/ee39599366a0d94a90b4d1b74bd39bb6ce9e4cea/debuginfo...
+--9655--   Considering /home/mihas/.cache/debuginfod_client/45ff779a671fdc7fdf8406f7ae61841e4edf49ec/debuginfo ..
+--9655--   .. build-id is valid
+==9655== Successfully downloaded debug file for /home/mihas/.cache/debuginfod_client/ee39599366a0d94a90b4d1b74bd39bb6ce9e4cea/debuginfo
+--9655-- Reading syms from /usr/lib64/libm.so.6
+==9655== Downloading debug info for /usr/lib64/libm.so.6...
+--9655--   Considering /home/mihas/.cache/debuginfod_client/3277765566c674dc9766f30a8ac41f5a6f7f6ca7/debuginfo ..
+--9655--   .. CRC mismatch (computed 0fe97ab5 wanted 672ef829)
+==9655== Server Error
+--9655--    object doesn't have a symbol table
+--9655-- Reading syms from /usr/lib64/libgcc_s-11-20210728.so.1
+==9655== Downloading debug info for /usr/lib64/libgcc_s-11-20210728.so.1...
+--9655--   Considering /home/mihas/.cache/debuginfod_client/279c1648ee67377b5de1c45a244740beea48423e/debuginfo ..
+--9655--   .. CRC is valid
+==9655== Successfully downloaded debug file for /usr/lib64/libgcc_s-11-20210728.so.1
+==9655== Downloading debug info for /home/mihas/.cache/debuginfod_client/279c1648ee67377b5de1c45a244740beea48423e/debuginfo...
+--9655--   Considering /home/mihas/.cache/debuginfod_client/45ff779a671fdc7fdf8406f7ae61841e4edf49ec/debuginfo ..
+--9655--   .. build-id is valid
+==9655== Successfully downloaded debug file for /home/mihas/.cache/debuginfod_client/279c1648ee67377b5de1c45a244740beea48423e/debuginfo
+--9655-- Reading syms from /usr/lib64/libc.so.6
+==9655== Downloading debug info for /usr/lib64/libc.so.6...
+--9655--   Considering /home/mihas/.cache/debuginfod_client/148792ddec60e0b15e20655fdc10c35a5c394413/debuginfo ..
+--9655--   .. build-id is valid
+==9655== Successfully downloaded debug file for /usr/lib64/libc.so.6
+==9655== WARNING: new redirection conflicts with existing -- ignoring it
+--9655--     old: 0x04c16200 (memalign            ) R-> (1011.0) 0x048469e4 memalign
+--9655--     new: 0x04c16200 (memalign            ) R-> (1017.0) 0x048469b7 aligned_alloc
+==9655== WARNING: new redirection conflicts with existing -- ignoring it
+--9655--     old: 0x04c16200 (memalign            ) R-> (1011.0) 0x048469e4 memalign
+--9655--     new: 0x04c16200 (memalign            ) R-> (1017.0) 0x0484698a aligned_alloc
+==9655== WARNING: new redirection conflicts with existing -- ignoring it
+--9655--     old: 0x04c16200 (memalign            ) R-> (1011.0) 0x048469e4 memalign
+--9655--     new: 0x04c16200 (memalign            ) R-> (1017.0) 0x048469b7 aligned_alloc
+==9655== WARNING: new redirection conflicts with existing -- ignoring it
+--9655--     old: 0x04c16200 (memalign            ) R-> (1011.0) 0x048469e4 memalign
+--9655--     new: 0x04c16200 (memalign            ) R-> (1017.0) 0x0484698a aligned_alloc
+--9655-- REDIR: 0x4c18160 (libc.so.6:strnlen) redirected to 0x48361ea (_vgnU_ifunc_wrapper)
+--9655-- REDIR: 0x4c18420 (libc.so.6:strpbrk) redirected to 0x48361ea (_vgnU_ifunc_wrapper)
+--9655-- REDIR: 0x4c17d20 (libc.so.6:strcmp) redirected to 0x48361ea (_vgnU_ifunc_wrapper)
+--9655-- REDIR: 0x4c34020 (libc.so.6:wcsnlen) redirected to 0x48361ea (_vgnU_ifunc_wrapper)
+--9655-- REDIR: 0x4c19030 (libc.so.6:memset) redirected to 0x48361ea (_vgnU_ifunc_wrapper)
+--9655-- REDIR: 0x4c328c0 (libc.so.6:wcslen) redirected to 0x48361ea (_vgnU_ifunc_wrapper)
+--9655-- REDIR: 0x4c19570 (libc.so.6:memcpy@@GLIBC_2.14) redirected to 0x48361ea (_vgnU_ifunc_wrapper)
+--9655-- REDIR: 0x4c326f0 (libc.so.6:wcschr) redirected to 0x48361ea (_vgnU_ifunc_wrapper)
+--9655-- REDIR: 0x4c17ca0 (libc.so.6:index) redirected to 0x48361ea (_vgnU_ifunc_wrapper)
+--9655-- REDIR: 0x4c183a0 (libc.so.6:rindex) redirected to 0x48361ea (_vgnU_ifunc_wrapper)
+--9655-- REDIR: 0x4c18f00 (libc.so.6:memmove) redirected to 0x48361ea (_vgnU_ifunc_wrapper)
+==9655== Preferring higher priority redirection:
+--9655--     old: 0x04cfa9c0 (__memcpy_avx_unalign) R-> (2018.0) 0x04849870 __memcpy_avx_unaligned_erms
+--9655--     new: 0x04cfa9c0 (__memcpy_avx_unalign) R-> (2018.1) 0x0484b160 memmove
+--9655-- REDIR: 0x4c32770 (libc.so.6:wcscmp) redirected to 0x48361ea (_vgnU_ifunc_wrapper)
+--9655-- REDIR: 0x4c19340 (libc.so.6:stpncpy) redirected to 0x48361ea (_vgnU_ifunc_wrapper)
+--9655-- REDIR: 0x4c32d30 (libc.so.6:wmemchr) redirected to 0x48361ea (_vgnU_ifunc_wrapper)
+--9655-- REDIR: 0x4c18270 (libc.so.6:strncmp) redirected to 0x48361ea (_vgnU_ifunc_wrapper)
+--9655-- REDIR: 0x4c193d0 (libc.so.6:strcasecmp) redirected to 0x48361ea (_vgnU_ifunc_wrapper)
+--9655-- REDIR: 0x4c17e60 (libc.so.6:strcspn) redirected to 0x48361ea (_vgnU_ifunc_wrapper)
+--9655-- REDIR: 0x4c327f0 (libc.so.6:wcscpy) redirected to 0x48361ea (_vgnU_ifunc_wrapper)
+--9655-- REDIR: 0x4c17c10 (libc.so.6:strcat) redirected to 0x48361ea (_vgnU_ifunc_wrapper)
+--9655-- REDIR: 0x4c194c0 (libc.so.6:strncasecmp_l) redirected to 0x48361ea (_vgnU_ifunc_wrapper)
+--9655-- REDIR: 0x4c18e60 (libc.so.6:bcmp) redirected to 0x48361ea (_vgnU_ifunc_wrapper)
+--9655-- REDIR: 0x4c1ed20 (libc.so.6:memrchr) redirected to 0x48361ea (_vgnU_ifunc_wrapper)
+--9655-- REDIR: 0x4c1a870 (libc.so.6:strchrnul) redirected to 0x48361ea (_vgnU_ifunc_wrapper)
+--9655-- REDIR: 0x4c17dd0 (libc.so.6:strcpy) redirected to 0x48361ea (_vgnU_ifunc_wrapper)
+--9655-- REDIR: 0x4c19470 (libc.so.6:strcasecmp_l) redirected to 0x48361ea (_vgnU_ifunc_wrapper)
+--9655-- REDIR: 0x4c180e0 (libc.so.6:strlen) redirected to 0x48361ea (_vgnU_ifunc_wrapper)
+--9655-- REDIR: 0x4c18310 (libc.so.6:strncpy) redirected to 0x48361ea (_vgnU_ifunc_wrapper)
+--9655-- REDIR: 0x4c192b0 (libc.so.6:stpcpy) redirected to 0x48361ea (_vgnU_ifunc_wrapper)
+--9655-- REDIR: 0x4c18dd0 (libc.so.6:memchr) redirected to 0x48361ea (_vgnU_ifunc_wrapper)
+--9655-- REDIR: 0x4c18540 (libc.so.6:strspn) redirected to 0x48361ea (_vgnU_ifunc_wrapper)
+--9655-- REDIR: 0x4c19130 (libc.so.6:mempcpy) redirected to 0x48361ea (_vgnU_ifunc_wrapper)
+--9655-- REDIR: 0x4c19420 (libc.so.6:strncasecmp) redirected to 0x48361ea (_vgnU_ifunc_wrapper)
+--9655-- REDIR: 0x4c1a7e0 (libc.so.6:rawmemchr) redirected to 0x48361ea (_vgnU_ifunc_wrapper)
+--9655-- REDIR: 0x4cf7850 (libc.so.6:__strrchr_avx2) redirected to 0x48470f0 (rindex)
+--9655-- REDIR: 0x4c15620 (libc.so.6:malloc) redirected to 0x48417f9 (malloc)
+--9655-- REDIR: 0x4cf7a20 (libc.so.6:__strlen_avx2) redirected to 0x48475f0 (strlen)
+--9655-- REDIR: 0x4cf3f40 (libc.so.6:__memcmp_avx2_movbe) redirected to 0x484a8f0 (bcmp)
+--9655-- REDIR: 0x4cf2e00 (libc.so.6:__strcmp_avx2) redirected to 0x48484b0 (strcmp)
+--9655-- REDIR: 0x4cfa9c0 (libc.so.6:__memcpy_avx_unaligned_erms) redirected to 0x484b160 (memmove)
+--9655-- REDIR: 0x4910a50 (libstdc++.so.6:operator new(unsigned long)) redirected to 0x4841f83 (operator new(unsigned long))
+--9655-- REDIR: 0x4cfa9a0 (libc.so.6:__mempcpy_avx_unaligned_erms) redirected to 0x484bd20 (mempcpy)
+--9655-- REDIR: 0x4910ab0 (libstdc++.so.6:operator new[](unsigned long)) redirected to 0x48431bd (operator new[](unsigned long))
+--9655-- REDIR: 0x4cf7640 (libc.so.6:__strchrnul_avx2) redirected to 0x484bc10 (strchrnul)
+--9655-- REDIR: 0x4cf3780 (libc.so.6:__memchr_avx2) redirected to 0x4848630 (memchr)
+--9655-- REDIR: 0x490ed20 (libstdc++.so.6:operator delete[](void*)) redirected to 0x48455e9 (operator delete[](void*))
+--9655-- REDIR: 0x490ed00 (libstdc++.so.6:operator delete(void*, unsigned long)) redirected to 0x484486b (operator delete(void*, unsigned long))
+==9655== Mismatched free() / delete / delete []
+==9655==    at 0x48448DD: operator delete(void*, unsigned long) (vg_replace_malloc.c:935)
+==9655==    by 0x401B86: Student::~Student() (in /home/mihas/Projects/CPP-2021-2022/lab8_staticVariableIntroduction/main)
+==9655==    by 0x4016DA: main (in /home/mihas/Projects/CPP-2021-2022/lab8_staticVariableIntroduction/main)
+==9655==  Address 0x4d99430 is 0 bytes inside a block of size 8 alloc'd
+==9655==    at 0x484322F: operator new[](unsigned long) (vg_replace_malloc.c:640)
+==9655==    by 0x401D0F: Student::addGrade(Grade*) const (in /home/mihas/Projects/CPP-2021-2022/lab8_staticVariableIntroduction/main)
+==9655==    by 0x4012B5: Grade::Grade(Student, double) (in /home/mihas/Projects/CPP-2021-2022/lab8_staticVariableIntroduction/main)
+==9655==    by 0x4016CE: main (in /home/mihas/Projects/CPP-2021-2022/lab8_staticVariableIntroduction/main)
+==9655== 
+==9655== Mismatched free() / delete / delete []
+==9655==    at 0x48448DD: operator delete(void*, unsigned long) (vg_replace_malloc.c:935)
+==9655==    by 0x401B86: Student::~Student() (in /home/mihas/Projects/CPP-2021-2022/lab8_staticVariableIntroduction/main)
+==9655==    by 0x401757: main (in /home/mihas/Projects/CPP-2021-2022/lab8_staticVariableIntroduction/main)
+==9655==  Address 0x4d992a0 is 0 bytes inside a block of size 8 alloc'd
+==9655==    at 0x484322F: operator new[](unsigned long) (vg_replace_malloc.c:640)
+==9655==    by 0x401D0F: Student::addGrade(Grade*) const (in /home/mihas/Projects/CPP-2021-2022/lab8_staticVariableIntroduction/main)
+==9655==    by 0x4012B5: Grade::Grade(Student, double) (in /home/mihas/Projects/CPP-2021-2022/lab8_staticVariableIntroduction/main)
+==9655==    by 0x401655: main (in /home/mihas/Projects/CPP-2021-2022/lab8_staticVariableIntroduction/main)
+==9655== 
+==9655== Mismatched free() / delete / delete []
+==9655==    at 0x48448DD: operator delete(void*, unsigned long) (vg_replace_malloc.c:935)
+==9655==    by 0x401B86: Student::~Student() (in /home/mihas/Projects/CPP-2021-2022/lab8_staticVariableIntroduction/main)
+==9655==    by 0x401784: main (in /home/mihas/Projects/CPP-2021-2022/lab8_staticVariableIntroduction/main)
+==9655==  Address 0x4d991b0 is 0 bytes inside a block of size 16 alloc'd
+==9655==    at 0x484322F: operator new[](unsigned long) (vg_replace_malloc.c:640)
+==9655==    by 0x401D0F: Student::addGrade(Grade*) const (in /home/mihas/Projects/CPP-2021-2022/lab8_staticVariableIntroduction/main)
+==9655==    by 0x4012B5: Grade::Grade(Student, double) (in /home/mihas/Projects/CPP-2021-2022/lab8_staticVariableIntroduction/main)
+==9655==    by 0x40156B: main (in /home/mihas/Projects/CPP-2021-2022/lab8_staticVariableIntroduction/main)
+==9655== 
+--9655-- REDIR: 0x4c15b90 (libc.so.6:free) redirected to 0x4844072 (free)
+==9655== 
+==9655== HEAP SUMMARY:
+==9655==     in use at exit: 0 bytes in 0 blocks
+==9655==   total heap usage: 14 allocs, 14 frees, 73,816 bytes allocated
+==9655== 
+==9655== All heap blocks were freed -- no leaks are possible
+==9655== 
+==9655== ERROR SUMMARY: 3 errors from 3 contexts (suppressed: 0 from 0)
+==9655== 
+==9655== 1 errors in context 1 of 3:
+==9655== Mismatched free() / delete / delete []
+==9655==    at 0x48448DD: operator delete(void*, unsigned long) (vg_replace_malloc.c:935)
+==9655==    by 0x401B86: Student::~Student() (in /home/mihas/Projects/CPP-2021-2022/lab8_staticVariableIntroduction/main)
+==9655==    by 0x401784: main (in /home/mihas/Projects/CPP-2021-2022/lab8_staticVariableIntroduction/main)
+==9655==  Address 0x4d991b0 is 0 bytes inside a block of size 16 alloc'd
+==9655==    at 0x484322F: operator new[](unsigned long) (vg_replace_malloc.c:640)
+==9655==    by 0x401D0F: Student::addGrade(Grade*) const (in /home/mihas/Projects/CPP-2021-2022/lab8_staticVariableIntroduction/main)
+==9655==    by 0x4012B5: Grade::Grade(Student, double) (in /home/mihas/Projects/CPP-2021-2022/lab8_staticVariableIntroduction/main)
+==9655==    by 0x40156B: main (in /home/mihas/Projects/CPP-2021-2022/lab8_staticVariableIntroduction/main)
+==9655== 
+==9655== 
+==9655== 1 errors in context 2 of 3:
+==9655== Mismatched free() / delete / delete []
+==9655==    at 0x48448DD: operator delete(void*, unsigned long) (vg_replace_malloc.c:935)
+==9655==    by 0x401B86: Student::~Student() (in /home/mihas/Projects/CPP-2021-2022/lab8_staticVariableIntroduction/main)
+==9655==    by 0x401757: main (in /home/mihas/Projects/CPP-2021-2022/lab8_staticVariableIntroduction/main)
+==9655==  Address 0x4d992a0 is 0 bytes inside a block of size 8 alloc'd
+==9655==    at 0x484322F: operator new[](unsigned long) (vg_replace_malloc.c:640)
+==9655==    by 0x401D0F: Student::addGrade(Grade*) const (in /home/mihas/Projects/CPP-2021-2022/lab8_staticVariableIntroduction/main)
+==9655==    by 0x4012B5: Grade::Grade(Student, double) (in /home/mihas/Projects/CPP-2021-2022/lab8_staticVariableIntroduction/main)
+==9655==    by 0x401655: main (in /home/mihas/Projects/CPP-2021-2022/lab8_staticVariableIntroduction/main)
+==9655== 
+==9655== 
+==9655== 1 errors in context 3 of 3:
+==9655== Mismatched free() / delete / delete []
+==9655==    at 0x48448DD: operator delete(void*, unsigned long) (vg_replace_malloc.c:935)
+==9655==    by 0x401B86: Student::~Student() (in /home/mihas/Projects/CPP-2021-2022/lab8_staticVariableIntroduction/main)
+==9655==    by 0x4016DA: main (in /home/mihas/Projects/CPP-2021-2022/lab8_staticVariableIntroduction/main)
+==9655==  Address 0x4d99430 is 0 bytes inside a block of size 8 alloc'd
+==9655==    at 0x484322F: operator new[](unsigned long) (vg_replace_malloc.c:640)
+==9655==    by 0x401D0F: Student::addGrade(Grade*) const (in /home/mihas/Projects/CPP-2021-2022/lab8_staticVariableIntroduction/main)
+==9655==    by 0x4012B5: Grade::Grade(Student, double) (in /home/mihas/Projects/CPP-2021-2022/lab8_staticVariableIntroduction/main)
+==9655==    by 0x4016CE: main (in /home/mihas/Projects/CPP-2021-2022/lab8_staticVariableIntroduction/main)
+==9655== 
+==9655== ERROR SUMMARY: 3 errors from 3 contexts (suppressed: 0 from 0)

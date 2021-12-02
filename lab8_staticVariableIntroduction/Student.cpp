@@ -16,9 +16,23 @@ Student::Student(std::string name ) : _name(name), currentId(staticId++) , grade
     gradeList[0] = nullptr;
 }
 
+Student::Student(const Student &oldStud) : currentId(oldStud.getId()), gradeList(oldStud.gradeList),  gradeListLength(oldStud.gradeListLength)
+{
+    _isCopy = true;
+    gradeList[0] = oldStud.gradeList[0];
+    gradeListLength[0] = oldStud.gradeListLength[0];
+}
+
 Student::~Student()
 {
-    std::cout << "usuwamu studenta: " << _name << "\n";
+    if (!_isCopy) {
+        delete  *gradeList;
+        delete gradeList;
+        delete gradeListLength;
+
+        std::cout << "usuwamy studenta: " << _name << "\n";
+    }
+
 }
 
 void Student::print() const {

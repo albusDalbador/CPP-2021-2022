@@ -11,6 +11,7 @@ class Grade;
 
 class Student {
     private:
+        bool _isCopy = false;
         static int staticId;
         const int currentId;
         const std::string _name;
@@ -21,6 +22,8 @@ class Student {
         void print() const;
 
         void addGrade(Grade *) const;
+
+        Student(const Student&);
 
         Student(std::string);
 
