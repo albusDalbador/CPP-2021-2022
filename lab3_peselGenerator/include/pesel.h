@@ -1,5 +1,7 @@
-#include <iostream>
 // YYMMDDXXXPK
+
+#pragma once
+#include <iostream>
 
 bool leapYear( int );
 int getControlNumber(int[11]);

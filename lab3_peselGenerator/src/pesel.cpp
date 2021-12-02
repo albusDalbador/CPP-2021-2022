@@ -17,10 +17,20 @@ char *sex(  const char index[4]) {
 int getControlNumber(int num[11]) {
      int sum = 0;
 
-     for (int i = 1; i <=11; i++ ){
-         sum += i * num[i];
+     for (int i = 0; i < 10; i++ ){
+
+        sum += ((i % 4 + 1) - 1 + 2*(i % 4 + 1 > 2)) * num[i];
+
+        
+        std::cout << (i%4) << 
+        " " <<
+        (i % 4 + 1) - 1 + 2*(i % 4 + 1 > 2) <<
+        " " << 2*(i % 4 + 1 > 2) <<
+         std::endl;
+        //  sum += i * num[i];
+        // std::cout << ((i%5)*2) -1 + (i%5 > 5)*2;
      }
-     return 10 - sum % 10;
+     return (10 - sum % 10) % 10;
 }
 
 bool leapYear(int year) {
