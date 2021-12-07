@@ -5,11 +5,14 @@
 #include <iostream>
 
 class Point {
+    //dla odmiany w danym programie nie uzyto geterow/seterow, tylko funkcje zaprzyjaznione, bo tak sie chcialo :)
 
     //zaprzyjaznienie funkcji main?? nie wiem, na ile to dopuszczalna praktyka, ale ma to na celu umozliwienie dostepu do wartosci prywatnych, ktore byloby trudne do zrobienia w inny sposob bez edycji main'a
     friend int main();
-    friend int compareX(Point,Point);
-    friend int compareY(Point,Point);
+    friend int compareX(Point&,Point&);
+    friend int compareY(Point&,Point&);
+
+    friend void directions( Point&,Point&,int(*)(Point&,Point&));
 
     public:
         //nazwany konstruktor zwraca nowy obiekt Point, stworzony z przekazanych wartosci x i y
@@ -59,8 +62,12 @@ class Point {
     static int number;
 };
 
-int compareX(Point, Point);
+int compareX(Point&, Point&);
 
-int compareY(Point,Point);
+int compareY(Point&,Point&);
+
+// int (*pointToCompX)(Point)
+
+void directions( Point&,Point&,int(*)(Point&,Point&));
 
 #endif

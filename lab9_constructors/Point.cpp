@@ -49,15 +49,32 @@ void Point::fullPrint() const {
     std::cout << _id << ". " << _name << " (" << _x << "," << _y << ")\n";
 }
 
-int compareX(  Point a,  Point b) {
-    // return a._x > b._x ? 1 : -1;
-    return 23;
+int compareX(Point &a,  Point &b) {
+    return a._x > b._x ? -1 : 1;
+    // return 23;
 }
 
 
-int compareY(  Point a, Point b) {
-    return a._y > b._y ? 1 : -1;
+int compareY(Point &a, Point &b) {
+    return a._y > b._y ? -1 : 1;
 }
 
+void directions(Point &first,Point &second, int (*func)(Point&,Point&)) {
+
+    if (func == compareX) {
+        std::cout << first._name;
+        std::string direction = compareX(first,second) > 0 ? " - na zach. od " : " - na wsch. od ";
+
+        std::cout << direction << second._name << "\n";
+    } 
+    
+    if (func == compareY) {
+        std::cout << first._name;
+        std::string direction = compareY(first,second) > 0 ? " - na pd. od " : " - na pn. od ";
+
+        std::cout << direction << second._name << "\n";
+    }
+     
+}
 
 

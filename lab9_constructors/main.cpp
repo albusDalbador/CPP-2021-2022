@@ -68,30 +68,30 @@ int main() {
 
 // Zadanie dodatkowe, jeśli starczy czasu albo do domu
 #ifdef EKSTRA
-  //  std::cout << "\n****** Etap EKSTRA *****\n";
-  //  std::cout << "compareX="<<compareX(poznan,krakow) << " compareY=" << compareY(poznan,krakow) << std::endl;
-  //  directions(poznan,krakow,compareX);//compareX, compareY to wskaźniki funkcyjne
-  //  directions(poznan,krakow,compareY);
+   std::cout << "\n****** Etap EKSTRA *****\n";
+   std::cout << "compareX="<<compareX(poznan,krakow) << " compareY=" << compareY(poznan,krakow) << std::endl;
+   directions(poznan,krakow,compareX);//compareX, compareY to wskaźniki funkcyjne
+   directions(poznan,krakow,compareY);
 
-  //  std::cout<<"compareX="<<compareX(tarnow,krakow)<<" compareY="<<compareY(tarnow,krakow)<< std::endl;
-  //  directions(tarnow,krakow,compareX);
-  //  directions(tarnow,krakow,compareY);
+   std::cout<<"compareX="<<compareX(tarnow,krakow)<<" compareY="<<compareY(tarnow,krakow)<< std::endl;
+   directions(tarnow,krakow,compareX);
+   directions(tarnow,krakow,compareY);
 
-  //  std::cout<<"compareX="<< compareX(poznan,nyc) <<" compareY="<<compareY(poznan,nyc) << std::endl;
-  //  directions(poznan,nyc,compareX);
-  //  directions(poznan,nyc,compareY);
+   std::cout<<"compareX="<< compareX(poznan,nyc) <<" compareY="<<compareY(poznan,nyc) << std::endl;
+   directions(poznan,nyc,compareX);
+   directions(poznan,nyc,compareY);
 
-  //  std::cout<<"compareX=" << compareX(nyc,krakow) << " compareY=" << compareY(nyc,krakow) << std::endl;
-  //  directions(nyc,krakow, compareX);
-  //  directions(nyc,krakow, compareY);
+   std::cout<<"compareX=" << compareX(nyc,krakow) << " compareY=" << compareY(nyc,krakow) << std::endl;
+   directions(nyc,krakow, compareX);
+   directions(nyc,krakow, compareY);
 
-  //  std::cout << "compareX=" << compareX(krakow,zielonki) << " compareY=" << compareY(krakow,zielonki) << std::endl;
-  //  directions(krakow,zielonki,compareX);
-  //  directions(krakow,zielonki,compareY);
+   std::cout << "compareX=" << compareX(krakow,zielonki) << " compareY=" << compareY(krakow,zielonki) << std::endl;
+   directions(krakow,zielonki,compareX);
+   directions(krakow,zielonki,compareY);
 
-  //  std::cout<<"compareX=" << compareX(krakow,batorska) << " compareY=" <<compareY(krakow,batorska) << std::endl;
-  //  directions(krakow,batorska,compareX);
-  //  directions(krakow,batorska,compareY);
+   std::cout<<"compareX=" << compareX(krakow,batorska) << " compareY=" <<compareY(krakow,batorska) << std::endl;
+   directions(krakow,batorska,compareX);
+   directions(krakow,batorska,compareY);
 #endif
 
 std::cout<<"\n***** Podsumowanie *****\n";
