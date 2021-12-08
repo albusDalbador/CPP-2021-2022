@@ -11,6 +11,12 @@ struct Node
 
 struct MyList
 {
+    MyList(const MyList &);
+
+    MyList();
+
+    ~MyList();
+
     char *name;
     Node *head;
 }; //structura przechowujaca nazwe oraz wskaznik na pierwszy element listy

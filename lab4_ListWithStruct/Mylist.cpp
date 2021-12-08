@@ -3,6 +3,25 @@
 #include <iostream>
 
 
+MyList::~MyList() {
+    delete this->name;
+
+}
+
+MyList::MyList(const MyList &list) : name(list.name) {
+    head = nullptr;
+
+    Node *step = list.head;
+
+    while (step) {
+        append(this,step->data);
+    }
+}
+
+MyList::MyList() {
+
+}
+
 
 void init(MyList *list, char *name) {
     
@@ -18,7 +37,7 @@ void append(MyList *list, char *str) {
 
     newElem->next = list->head;
 
-    newElem->data = new char[strlen(str)];
+    newElem->data = new char[strlen(str) + 1];
     strcpy(newElem->data,str);
 
     list->head = newElem;
@@ -51,7 +70,7 @@ void replace (MyList *list, char *oldStr, char *newStr) {
 
         delete [] node->data;
 
-        node -> data = new char[strlen(newStr)] ;
+        node -> data = new char[strlen(newStr) + 1] ;
 
         strcpy(node->data, newStr);
     }
@@ -67,7 +86,7 @@ void insertAfter(MyList *list,char *oldStr, char *newStr) {
 
         elem->next = node->next;
 
-        elem->data = new char(strlen(newStr));
+        elem->data = new char[strlen(newStr) + 1];
 
         strcpy(elem->data,newStr);
 
@@ -158,17 +177,25 @@ void remove(MyList *list, char *value) {
 
 void clear (MyList *list) {
 
-    if (!empty(list)) {
-        Node *item = list->head;
+    Node *head = list->head;
 
-        // delete list;
+    // delete head;
 
-        while (item) {
-            list->head = item->next;
-            delete [] item;
-            // item=step;
+
+    if (head) {
+        while (head) {
+            Node *forDelete = head;
+
+            head = head->next;
+
+            delete forDelete->data;
+            delete forDelete;
         }
-
-        // delete l
     }
+
+    // while (head) {
+    //     delete head->data;
+
+    //     head = head->next;
+    // }
 }

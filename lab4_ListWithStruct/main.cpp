@@ -84,14 +84,14 @@ int main() {
     ////////////////////////////////////////////////
     std::cout << "\n--- Czyszczenie ---" << std::endl;
     clear(&testList);
-    std::cout << "Czy teraz lista jest pusta? " 
-              << (empty(lptr)? "TAK" : "NIE") << std::endl;
+    // std::cout << "Czy teraz lista jest pusta? " 
+              // << (empty(lptr)? "TAK" : "NIE") << std::endl;
               
     std::cout << "Probujemy wypisac pusta liste. " << std::endl;
-    print(lptr);
+    // print(lptr);
     
     /**************************************************/
-    print(&drugaLista);
+    // print(&drugaLista);
     clear(&drugaLista);
     
     // clear(&drugaLista);
