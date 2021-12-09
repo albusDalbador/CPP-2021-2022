@@ -2,6 +2,7 @@
 #include <iostream>
 #include <cstring>
 
+ 
 
 int up2low_low2up(int symbol) {
     if ((char)symbol == ' ') return ' ';
@@ -42,6 +43,8 @@ void insert (MyText *item, int pos, char *pattern) {
             strncpy(before,item->text,pos);
             strcpy(after,item->text+pos);
 
+            delete [] item->text;
+
             item->text = new char[getStringLen(item->text) + getStringLen(pattern)];
 
             strcpy(item->text,before);
@@ -61,10 +64,7 @@ void insert (MyText *item, int pos, char *pattern) {
 MyText *initMyText(char *newName) {
     MyText *newItem = new MyText;
 
-    newItem->text = NULL;
-    newItem->name = NULL;
-
-    newItem->name = new char [getStringLen(newName)];
+    newItem->name = new char [strlen(newName) + 1];
 
     strcpy( newItem->name,newName);
 
@@ -72,22 +72,22 @@ MyText *initMyText(char *newName) {
 }
 
 MyText *initMyText(char *newName, MyText *oldItem) {
-    MyText *newItem = new MyText;
+    // MyText *newItem = new MyText;
 
-    newItem->text = NULL;
-    newItem->name = NULL;
+    // newItem->text = NULL;
+    // newItem->name = NULL;
 
-    newItem->name = new char [getStringLen(newName)];
+    // newItem->name = new char [getStringLen(newName) + 1];
     
-    strcpy( newItem->name,newName);
+    // strcpy( newItem->name,newName);
 
-    if (oldItem->text) {
-        newItem->text = new char[getStringLen(oldItem->text)];
+    // if (oldItem->text) {
+    //     newItem->text = new char[getStringLen(oldItem->text)];
 
-        strcpy(newItem->text,oldItem->text);
-    }
+    //     strcpy(newItem->text,oldItem->text);
+    // }
 
-    return newItem;
+    // return newItem;
 }
 
 void modify(MyText *item, int (*func)(int)) {
@@ -118,17 +118,22 @@ char *getStr(MyText *item) {
 MyText *append(MyText *item, char *pattern) {
     
     if (item->text){
-        char *step = new char[getStringLen(item->text)];
+        char *step = new char[getStringLen(item->text) + 1];
         strcpy(step,item->text);
 
-        item->text = new char [getStringLen(item->text) + getStringLen(pattern)];
+        delete [] item->text;
+
+        item->text = new char [getStringLen(item->text) + getStringLen(pattern) + 1];
 
         strcpy(item->text,step);
         strcpy(item->text + getStringLen(item->text), pattern);
+
+        delete [] step;
     }
     else {
+        // delete [] item->text;
 
-        item->text = new char [getStringLen(pattern)];
+        item->text = new char [getStringLen(pattern) + 1];
 
         strcpy(item->text,pattern);
     }
@@ -168,10 +173,9 @@ int getStringLen(char *str) {
 }
 
 void clear(MyText *item) {
-    if (item->name)
-    delete [] item->text;
     if (item->text)
+    delete [] item->text;
+    if (item->name)
     delete [] item-> name;
-
-    // delete item;
+    delete item;
 }
