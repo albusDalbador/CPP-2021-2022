@@ -1,6 +1,8 @@
 #ifndef _MYLIST_H_
 #define _MYLIST_H_
 
+#include <iostream>
+
 class Element;
 
 class MyList
@@ -32,7 +34,7 @@ public:
     char *getName() const;
 
     //zwraca "TAK" jezeli lista jest pusta i "NIE" w przeciwnym wypadku
-    char* isEmpty() const;
+    bool isEmpty() const;
 
     //usuwa z listy pierwszy element
     void removeFirst();

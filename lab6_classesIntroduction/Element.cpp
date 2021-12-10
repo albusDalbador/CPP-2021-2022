@@ -12,7 +12,9 @@ Element::Element(char *text) {
 }
 
 Element::~Element() {
-    std::cout << "Destruktor Element: " << this->getName() << std::endl;
+    std::cout << "Destruktor Element: " << name << std::endl;
+    
+    // delete [] name;
 }
 
 char* Element::getName() {

@@ -19,19 +19,21 @@ MyList::MyList(char *name) {
 
 MyList::~MyList(){
     std::cout << "Destruktor Element: " << this->getName() << std::endl;
+
+    delete [] listName;
 }
 
 void MyList::append(Element *elem) {
-    Element *step = this->head;
+    Element *step = this->tail;
 
     // this->head = elem;
 
-    elem->setNext(this->head);
+    elem->setNext(this->tail);
 
-    this->head = elem;
+    this->tail = elem;
 
-    if (this->tail == nullptr) {
-        this->tail = elem;
+    if (this->head == nullptr) {
+        this->head = elem;
     }
 }
 
@@ -39,9 +41,9 @@ void MyList::append(char *text) {
     Element *newElem = new Element();
 
     newElem->setName(text);
-    newElem->setNext(this->head);
+    newElem->setNext(this->tail);
 
-    this->head = newElem;
+    this->tail = newElem;
 
     if (this->tail == nullptr) {
         this->tail = newElem;
@@ -50,9 +52,9 @@ void MyList::append(char *text) {
 
 void MyList::prepend(Element *elem) {
 
-    this->tail->setNext(elem);
+    this->head->setNext(elem);
 
-    this->tail = elem;
+    this->head = elem;
 
 }
 
@@ -68,11 +70,11 @@ char* MyList::getName() const {
     return this->listName;
 }
 
-char* MyList::isEmpty() const {
+bool MyList::isEmpty() const {
     if (this->head) {
-        return "Nie";
+        return true;
     } else {
-        return "Tak";
+        return false;
     }
 }
 
@@ -83,6 +85,7 @@ void MyList::removeFirst() {
 
     // delete step;
     step->~Element();
+    
 }
 
 void MyList::clearList() {
@@ -115,5 +118,4 @@ void print(const MyList *list) {
         std::cout << step->getName() <<"]\n";
     }
 
-    std::cout << "]\n";
 }

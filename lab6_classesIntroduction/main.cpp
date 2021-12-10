@@ -27,12 +27,12 @@
 
 int main() {
     std::cout << "*** Lista 1 ***" << std::endl;
-    MyList list1("Lista1"); //konstruktor
+    MyList list1((char*)"Lista1"); //konstruktor
 
-    Element *agnieszka=new Element("Agnieszka"); //konstruktor
+    Element *agnieszka=new Element((char*)"Agnieszka"); //konstruktor
     list1.append(agnieszka); //podpinamy do listy
-    list1.append("Beata");
-    list1.append("Maria");
+    list1.append((char*)"Beata");
+    list1.append((char*)"Maria");
 
     const MyList* ptr1 = &list1;
     std::cout << "Pierwszy: " << ptr1->getHead()-> getName() << std::endl;
@@ -46,12 +46,12 @@ int main() {
     print(ptrc);
 
     std::cout << "\n*** Lista 2 ***" <<std::endl;
-    MyList list2("Lista2");
+    MyList list2((char*)"Lista2");
     
-    Element *kris = new Element("Krzysztof");
-    list2.append("Adam");
+    Element *kris = new Element((char*)"Krzysztof");
+    list2.append((char*)"Adam");
     list2.prepend(kris);
-    list2.append("Tomasz");
+    list2.append((char*)"Tomasz");
     print(&list2);
 
     std::cout << "\n*** Usuwanie ***" << std::endl;
