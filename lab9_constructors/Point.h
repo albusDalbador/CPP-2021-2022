@@ -3,6 +3,7 @@
 
 #include <string>
 #include <iostream>
+#include <utility>
 
 class Point {
     //dla odmiany w danym programie nie uzyto geterow/seterow, tylko funkcje zaprzyjaznione, bo tak sie chcialo :)
