@@ -1,8 +1,12 @@
 #include "Zespolone.h"
 
-// Zespolone::operator Wymierne() const {
-    
-// }
+
+
+Zespolone Dodaj(Zespolone first, Zespolone second) {
+
+    return Zespolone(first.Re() + second.Re(),first.Im() + second.Im());
+}
+
 
 void Zespolone::Print(std::string str) const {
 

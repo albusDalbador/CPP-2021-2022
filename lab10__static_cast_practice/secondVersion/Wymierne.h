@@ -1,17 +1,23 @@
 #pragma once 
 
-#include "Zespolone.h"
+// #include "Zespolone.h"
 #include <string>
 #include <iostream>
 #include <math.h>
 
 class Wymierne {
 
+    friend class Zespolone;
+
+    
+
     private:
         int _licz;
         int _mian;
 
     public:
+
+   
 
         operator double() const;
 

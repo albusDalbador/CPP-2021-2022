@@ -27,7 +27,9 @@
 #include <iostream>
 #include <math.h>
 #include "Wymierne.h"
+
 #include "Zespolone.h"
+
 
 int main() {
 
@@ -66,10 +68,10 @@ int main() {
   Z.Print("Z = ");
   std::cout << "---Im = " << Z.Im() <<std::endl;
 
-  // Zespolone Z1 = Dodaj(Zespolone(1),  static_cast<Zespolone>(4));
-//   Z1.Print("Z1 = ");
+  Zespolone Z1 = Dodaj(Zespolone(1),  static_cast<Zespolone>(4));
+  Z1.Print("Z1 = ");
 
-//   Zespolone Z2 = Dodaj(Zespolone(1, 5),  static_cast<Zespolone>(Dwa)); Z2.Print("Z2 = ");
+  Zespolone Z2 = Dodaj(Zespolone(1, 5),  static_cast<Zespolone>(Dwa)); Z2.Print("Z2 = ");
 
 //   Zespolone Z3 = Dodaj(static_cast<Zespolone>(Wymierne(10, 3)), Wymierne(1, 3));  
 //   Z3.Print("Z3 = ");
