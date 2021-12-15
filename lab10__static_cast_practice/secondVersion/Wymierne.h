@@ -18,12 +18,14 @@ class Wymierne {
         // Wymierne operator () (int) ;
 
         Wymierne();
-        Wymierne(int);
+        explicit Wymierne(int);
         Wymierne(int,int);
 
+        //const_cast usage here
+        void Licznik(int) const;
         void Mianownik(int);
         void Print(std::string) const;
-        void Set(const Wymierne&);
+        void Set(const Wymierne&) const ;
 
 
         int getMeter() const;
@@ -49,8 +51,6 @@ inline int Wymierne::getMeter() const {
 inline int Wymierne::getDenominator()const{
     return _denominator;
 }
-
-
 
 
 #endif

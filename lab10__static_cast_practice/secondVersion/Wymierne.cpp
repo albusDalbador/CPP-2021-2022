@@ -4,10 +4,9 @@ Wymierne::operator double() const {
     return (double)this->_meter / (double)this->_denominator;
 }
 
-// Wymierne Wymierne::operator ()(int a) {
-//     return Wymierne(a,1);
-// }
-
+void Wymierne::Licznik(int l) const{
+    const_cast<Wymierne*>(this)->_meter = l; 
+}
 
 void Wymierne::Mianownik(int a) {
     this->_denominator = a == 0 ? 1 : a;
@@ -28,8 +27,8 @@ void Wymierne::Print(std::string str) const {
     std::cout << "\n";
 }
 
-void Wymierne::Set(const Wymierne &item) {
-    this->_meter = item.getMeter();
-    this->_denominator = item.getDenominator();
+void Wymierne::Set(const Wymierne &item) const{
+    const_cast<Wymierne *>(this)->_meter = item.getMeter();
+    const_cast<Wymierne *>(this)->_denominator = item.getDenominator();
 }
 
