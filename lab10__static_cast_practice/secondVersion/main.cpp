@@ -64,26 +64,26 @@ int main() {
 
   std::cout << "\n*** ZESPOLONE ***"<< std::endl;
 
-  Zespolone Z = Dwa;
-  Z.Print("Z = ");
-  std::cout << "---Im = " << Z.Im() <<std::endl;
+  // Zespolone Z = Dwa;
+  // Z.Print("Z = ");
+  // std::cout << "---Im = " << Z.Im() <<std::endl;
 
-  Zespolone Z1 = Dodaj(Zespolone(1),  static_cast<Zespolone>(4));
-  Z1.Print("Z1 = ");
+  // Zespolone Z1 = Dodaj(Zespolone(1),  static_cast<Zespolone>(4));
+  // Z1.Print("Z1 = ");
 
-  Zespolone Z2 = Dodaj(Zespolone(1, 5),  static_cast<Zespolone>(Dwa)); Z2.Print("Z2 = ");
+  // Zespolone Z2 = Dodaj(Zespolone(1, 5),  static_cast<Zespolone>(Dwa)); Z2.Print("Z2 = ");
 
-//   Zespolone Z3 = Dodaj(static_cast<Zespolone>(Wymierne(10, 3)), Wymierne(1, 3));  
-//   Z3.Print("Z3 = ");
+  // Zespolone Z3 = Dodaj(static_cast<Zespolone>(Wymierne(10, 3)), Wymierne(1, 3));  
+  // Z3.Print("Z3 = ");
   
-//   Zespolone Z4 = Dodaj(1, 2); // w przypadku problemów z tą linią zakomentuj ją i odkomentuj następną    
-//   // Zespolone Z4 = Dodaj(static_cast<Zespolone>(1), static_cast<Zespolone>(2));   //wersja rezerwowa (-2 pkt)      
-//   Z4.Print("Z4 = ");
+  // Zespolone Z4 = Dodaj(1, 2); // w przypadku problemów z tą linią zakomentuj ją i odkomentuj następną    
+  // Zespolone Z4 = Dodaj(static_cast<Zespolone>(1), static_cast<Zespolone>(2));   //wersja rezerwowa (-2 pkt)      
+  // Z4.Print("Z4 = ");
 
-//   Zespolone Z5(std::move(Z4));
-//   Z4.Print("Z4 = ");
+  // Zespolone Z5(std::move(Z4));
+  // Z4.Print("Z4 = ");
 
-//   Dodaj(Z5,Z2).Print("Z5+Z2 = ");
+  // Dodaj(Z5,Z2).Print("Z5+Z2 = ");
 
 // #ifndef BASIC // (ok. 2 pkt)
 //   std::cout << "\n*** WYMIERNE CONST ***"<< std::endl;

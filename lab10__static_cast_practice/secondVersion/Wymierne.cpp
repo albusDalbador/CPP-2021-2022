@@ -1,30 +1,35 @@
 #include "Wymierne.h"
 
-// Wymierne::operator Zespolone() const {
-//     return Zespolone((double)this->_licz / (double)this->_mian,0);
-// } 
-
 Wymierne::operator double() const {
-    return (double)this->_licz / (double)this->_mian;
+    return (double)this->_meter / (double)this->_denominator;
 }
 
+// Wymierne Wymierne::operator ()(int a) {
+//     return Wymierne(a,1);
+// }
 
-Wymierne Pomnoz(const Wymierne &num1, const Wymierne &num2) {
-    return Wymierne(num1.getLicz() * num2.getLicz(), num1.getMian() * num2.getMian());
+
+void Wymierne::Mianownik(int a) {
+    this->_denominator = a == 0 ? 1 : a;
 }
 
+Wymierne Pomnoz(Wymierne first, Wymierne second) {
 
+    return Wymierne(first.getMeter() * second.getMeter(), first.getDenominator() * second.getDenominator());
+}
 
 void Wymierne::Print(std::string str) const {
+    std::cout << str;
 
-    if (_licz != 0 && _mian != 1)
-        std::cout <<  str << _licz << "/" << _mian << "\n";
-    else if (_licz == 0)
-        std::cout << str << "0\n";
-    else 
-        std::cout << str  << _licz << "\n";
+    if (_meter == 0 ) std::cout << 0;
+    else if (_denominator == 0) std::cout << _meter;
+    else std::cout << _meter << "/" << _denominator;
+
+    std::cout << "\n";
 }
 
-double sqrt(Wymierne &item) {
-    return (double)sqrt(item.getLicz()) / (double)sqrt(item.getMian());
+void Wymierne::Set(const Wymierne &item) {
+    this->_meter = item.getMeter();
+    this->_denominator = item.getDenominator();
 }
+

@@ -1,0 +1,32 @@
+/* Oczekiwany wynik:
+
+*** WYMIERNE ***
+Raz = 1/2
+Dwa = 3/4
+Trzy = 0
+Cztery = 2
+W1 = 3/8
+0.375
+W2 = 5/2
+W3 = 50
+7.07107
+W2 = 5
+W2 = 5/8
+W3 = 3/8
+
+*** ZESPOLONE ***
+Z = 0.75
+---Im = 0
+Z1 = 5
+Z2 = 1.75 + 5i
+Z3 = 3.66667
+Z4 = 3
+Z4 = 0
+Z5+Z2 = 4.75 + 5i
+
+*** WYMIERNE CONST ***
+W1 = 7/8
+W4 = 7/8
+W4 = 15/64
+
+*/

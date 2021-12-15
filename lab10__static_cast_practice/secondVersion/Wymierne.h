@@ -1,82 +1,56 @@
-#pragma once 
+#ifndef _WYMIERNE_H_
+#define _WYMIERNE_H_
 
-// #include "Zespolone.h"
-#include <string>
+
 #include <iostream>
+#include <string>
 #include <math.h>
 
 class Wymierne {
 
-    friend class Zespolone;
-
-    
-
     private:
-        int _licz;
-        int _mian;
+        int _meter;
+        int _denominator;
 
     public:
 
-   
-
         operator double() const;
+        // Wymierne operator () (int) ;
 
+        Wymierne();
         Wymierne(int);
-
-        explicit Wymierne();
-
-        explicit Wymierne(int,int);
-
-        //member functions
-        void Print(std::string) const;
+        Wymierne(int,int);
 
         void Mianownik(int);
+        void Print(std::string) const;
+        void Set(const Wymierne&);
 
-        void Set(const Wymierne &);
 
-        //getters & setters:
+        int getMeter() const;
+        int getDenominator() const;
 
-        int getLicz() const;
-        int getMian() const;
-
-        // void setLicz(int);
-        // void setMian(int);
 };
 
-//non-member function declaration
+inline Wymierne::Wymierne() : _meter(0) , _denominator(1) {}
 
-Wymierne Pomnoz(const Wymierne &, const Wymierne &);
+inline Wymierne::Wymierne(int a) : _meter(a), _denominator(1) {}
 
-double sqrt(Wymierne&);
+inline Wymierne::Wymierne(int a, int b) : _meter(a), _denominator(b) {}
 
-//definicja konstruktorow
+//non-member declaration
+Wymierne Pomnoz(Wymierne,Wymierne);
 
-inline Wymierne::Wymierne() : _licz(0), _mian(1) {}
 
-inline Wymierne::Wymierne(int licz) : _licz(licz) , _mian(1) {}
-
-inline Wymierne::Wymierne(int licznik,int mianownik) : _licz(licznik) {
-
-    _mian = (mianownik == 0 ? 1 : mianownik) ;
-}
- 
-//memeber-function declaration
-
-inline void Wymierne::Mianownik(int mian) {
-    _mian = mian == 0 ? 1 : mian;
+//getters definition
+inline int Wymierne::getMeter() const {
+    return _meter;
 }
 
-inline void Wymierne::Set(const Wymierne &item) {
-    _licz = item.getLicz(); 
-    _mian = item.getMian();
+inline int Wymierne::getDenominator()const{
+    return _denominator;
 }
 
-//definicja getterow i setterow
 
-inline int Wymierne::getLicz() const {
-    return _licz;
-}
 
-inline int Wymierne::getMian() const {
-    return _mian;
-}
+
+#endif
