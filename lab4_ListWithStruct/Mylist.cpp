@@ -106,6 +106,7 @@ void removeAfter(MyList *list, char *pattern) {
 
             node->next = node->next->next;
 
+            delete [] step->data;
             delete step;
         }
     } else { 

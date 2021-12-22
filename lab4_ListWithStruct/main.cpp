@@ -22,7 +22,7 @@
 int main() {
     std::cout << "--- Pierwsza lista ---" << std::endl;
     MyList testList;
-    init(&testList, "Lista1"); //alokujemy dynamicznie pamięć dla nazwy listy
+    init(&testList, (char *)"Lista1"); //alokujemy dynamicznie pamięć dla nazwy listy
     
     /**************************************************/
     char buffer[50];
@@ -30,49 +30,49 @@ int main() {
     append(&testList, buffer);
     strcpy(buffer, "ma"); //dodajemy na początek listy
     append(&testList, buffer);
-    append(&testList, "Ala");
+    append(&testList, (char *)"Ala");
 
     const MyList* lptr = &testList;
 
     std::cout << lptr->head->data << std::endl;
     std::cout << lptr->head->next->data << std::endl;
      
-    // // /**************************************************/
+    // // // /**************************************************/
     std::cout << "Czy lista jest pusta? " 
               << (empty(lptr)? "TAK" : "NIE") << std::endl;
     print(lptr); // Ala ma kota
-    replace(&testList,"Ala","Alicja");
-    replace(&testList,"kota","psa");
+    replace(&testList,(char *)"Ala",(char *)"Alicja");
+    replace(&testList,(char *)"kota",(char *)"psa");
     print(lptr);  // Alicja ma psa
 
     // /**************************************************/
     MyList drugaLista;
-    init(&drugaLista, "Lista2");
+    init(&drugaLista, (char *)"Lista2");
     strcpy(buffer, "jest latwe.");
     append(&drugaLista, buffer);
     strcpy(buffer, "Zadanie");
     append(&drugaLista, buffer);
     print(&drugaLista); //Zadanie jest latwe
 
-    /********************* BASIC ***********************/
+    // /********************* BASIC ***********************/
     #ifndef BASIC  // funkcje insertAfter i removeAfter
       std::cout << "\n--- Zadania dodatkowe ---" << std::endl;
       MyList* l1ptr = &testList;
-      insertAfter(&testList,"Alicja","Nowak"); //wstawiamy Nowak za Alicja
-      insertAfter(l1ptr,"psa","Puszka"); //wstawiamy Puszka za Psa
+      insertAfter(&testList,(char *)"Alicja",(char *)"Nowak"); //wstawiamy Nowak za Alicja
+      insertAfter(l1ptr,(char *)"psa",(char *)"Puszka"); //wstawiamy Puszka za Psa
       print(l1ptr); //Alicja Nowak ma psa Puszka
 
-      removeAfter(l1ptr,"Alicja"); //kasujemy Nowak
-      removeAfter(l1ptr,"psa"); //kasujemy Puszka
+      removeAfter(l1ptr,(char *)"Alicja"); //kasujemy Nowak
+      removeAfter(l1ptr,(char *)"psa"); //kasujemy Puszka
       print(l1ptr); //Alicja ma psa
 
-      removeAfter(&testList,"kota"); //nic nie kasujemy
-      insertAfter(&testList,"Alicja","Ala"); //wstawiamy Ala za Alicja
+      removeAfter(&testList,(char *)"kota"); //nic nie kasujemy
+      insertAfter(&testList,(char *)"Alicja",(char *)"Ala"); //wstawiamy Ala za Alicja
     #endif
 
-    // /****************** ADVANCE **********************/
+    // // /****************** ADVANCE **********************/
 
-    #ifdef ADVANCE  // funkcja remove
+    #ifndef ADVANCE  // funkcja remove
       remove(&testList,"Alicja"); //kasujemy Alicja
       insertAfter(&testList,"psa","owczarka"); //wstawiamy Ala za Alicja
       print(l1ptr);
@@ -81,17 +81,17 @@ int main() {
       remove(&testList,"Alicja"); //nic nie kasujemy
     #endif
 
-    ////////////////////////////////////////////////
-    std::cout << "\n--- Czyszczenie ---" << std::endl;
+    // ////////////////////////////////////////////////
+    // std::cout << "\n--- Czyszczenie ---" << std::endl;
     clear(&testList);
-    // std::cout << "Czy teraz lista jest pusta? " 
-              // << (empty(lptr)? "TAK" : "NIE") << std::endl;
+    // // std::cout << "Czy teraz lista jest pusta? " 
+    //           // << (empty(lptr)? "TAK" : "NIE") << std::endl;
               
-    std::cout << "Probujemy wypisac pusta liste. " << std::endl;
-    // print(lptr);
+    // std::cout << "Probujemy wypisac pusta liste. " << std::endl;
+    // // print(lptr);
     
-    /**************************************************/
-    // print(&drugaLista);
+    // /**************************************************/
+    // // print(&drugaLista);
     clear(&drugaLista);
     
     // clear(&drugaLista);
