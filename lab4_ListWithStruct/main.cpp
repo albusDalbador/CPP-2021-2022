@@ -82,19 +82,19 @@ int main() {
     #endif
 
     // ////////////////////////////////////////////////
-    // std::cout << "\n--- Czyszczenie ---" << std::endl;
+    std::cout << "\n--- Czyszczenie ---" << std::endl;
     clear(&testList);
-    // // std::cout << "Czy teraz lista jest pusta? " 
-    //           // << (empty(lptr)? "TAK" : "NIE") << std::endl;
+    std::cout << "Czy teraz lista jest pusta? " 
+              << (empty(lptr)? "TAK" : "NIE") << std::endl;
               
-    // std::cout << "Probujemy wypisac pusta liste. " << std::endl;
-    // // print(lptr);
+    std::cout << "Probujemy wypisac pusta liste. " << std::endl;
+    print(lptr);
     
     // /**************************************************/
-    // // print(&drugaLista);
+    print(&drugaLista);
     clear(&drugaLista);
     
-    // clear(&drugaLista);
+    clear(&drugaLista);
 }
 
 /*oczekiwany output

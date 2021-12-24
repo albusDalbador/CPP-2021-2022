@@ -50,12 +50,14 @@ bool empty(const MyList *list) {
 
 
 void print(const MyList *list) {
-    Node *step = list->head;
+    if (list->head) {
+        Node *step = list->head;
+        std::cout << list->name << ": ";
+        while(step){
+            std::cout << step->data << " ";
 
-    while(step){
-        std::cout << step->data << " ";
-
-        step=step->next;
+            step=step->next;
+        }
     }
 
     std::cout << std::endl;
@@ -138,11 +140,8 @@ Node *findElem(const MyList *list, char *pattern) {
 
 
 void remove(MyList *list, char *value) {
-    // Node **previous = NULL;
-    // Node *item = findElelmToRemove(list,value,previous);
 
     Node *step = list->head;
-
 
     if (step) {
         if (!strcmp(step->data,value)) {
@@ -159,7 +158,6 @@ void remove(MyList *list, char *value) {
                 std::cout << step->next->data <<  std::endl;
 
                 Node *item = step->next->next;
-                // delete [] step->next->data;
                 delete step->next;
 
                 step->next = item;
@@ -170,33 +168,24 @@ void remove(MyList *list, char *value) {
             step = step->next;
         } 
     }
-    
-    std::cout << "Lista nie zawiera elemntu o podanej nazwie : \"" << value << "\""<< std::endl;
-     
+    std::cout << "Lista nie zawiera elemntu o podanej nazwie : \"" << value << "\""<< std::endl;     
 }
 
 
 void clear (MyList *list) {
 
-    Node *head = list->head;
+    Node *step = list->head;
 
-    // delete head;
+    if (step) {
+        while (step) {
+            Node *forDelete = step;
 
-
-    if (head) {
-        while (head) {
-            Node *forDelete = head;
-
-            head = head->next;
+            step = step->next;
 
             delete forDelete->data;
             delete forDelete;
         }
     }
 
-    // while (head) {
-    //     delete head->data;
-
-    //     head = head->next;
-    // }
+    list->head = nullptr;
 }
