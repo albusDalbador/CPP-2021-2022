@@ -18,17 +18,18 @@ MyList::MyList(char *name) {
 }
 
 MyList::~MyList(){
-    std::cout << "Destruktor Element: " << this->getName() << std::endl;
+    std::cout << "Destruktor MyList: " << this->getName() << std::endl;
 
     delete [] listName;
 }
 
 void MyList::append(Element *elem) {
-    Element *step = this->tail;
+    // Element *step = this->tail;
 
-    // this->head = elem;
+    elem->setNext(nullptr);
 
-    elem->setNext(this->tail);
+    if (this->tail)
+        this->tail->setNext(elem);
 
     this->tail = elem;
 
@@ -41,21 +42,21 @@ void MyList::append(char *text) {
     Element *newElem = new Element();
 
     newElem->setName(text);
-    newElem->setNext(this->tail);
+
+    if (this->tail)
+        this->tail->setNext(newElem);
 
     this->tail = newElem;
 
-    if (this->tail == nullptr) {
-        this->tail = newElem;
+    if (this->head == nullptr) {
+        this->head = newElem;
     }
 }
 
 void MyList::prepend(Element *elem) {
-
-    this->head->setNext(elem);
+    elem->setNext(this->head);
 
     this->head = elem;
-
 }
 
 Element* MyList::getHead()const {
@@ -72,9 +73,9 @@ char* MyList::getName() const {
 
 bool MyList::isEmpty() const {
     if (this->head) {
-        return true;
-    } else {
         return false;
+    } else {
+        return true;
     }
 }
 
@@ -83,9 +84,7 @@ void MyList::removeFirst() {
 
     this->head = this->head->getNext();
 
-    // delete step;
     step->~Element();
-    
 }
 
 void MyList::clearList() {
@@ -103,19 +102,18 @@ void MyList::clearList() {
 
 //funkcja wypisuje cala liste razem z nazwa
 void print(const MyList *list) {
-    std::cout << list->getName()
-        << " = [" ;
+    std::cout << list->getName() << " = [" ;
 
     if (list->getHead()) {
         Element *step = list->getHead();
 
+        while( step) {
+            std::cout << step->getName();
 
-        while( step->getNext()) {
-            std::cout << step->getName() << " ";
+            if (step->getNext()) std::cout << " ";
+
             step = step->getNext();
         } 
-
-        std::cout << step->getName() <<"]\n";
     }
-
+        std::cout <<"]\n";
 }

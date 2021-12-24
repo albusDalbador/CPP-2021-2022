@@ -9,12 +9,15 @@ Element::Element() {
 
 Element::Element(char *text) {
     this->name = text;
+    this->next =nullptr;
 }
 
 Element::~Element() {
     std::cout << "Destruktor Element: " << name << std::endl;
     
+    
     // delete [] name;
+    // delete this;
 }
 
 char* Element::getName() {
@@ -22,13 +25,13 @@ char* Element::getName() {
 }
 
 void Element::setName(char *text) {
-    this->name = new char[strlen(text)];
+    this->name = new char[strlen(text) + 1];
 
     strcpy(this->name,text);
 }
 
 Element* Element::getNext() {
-    return next;
+    return this->next;
 }
 
 void Element::setNext(Element *next) {

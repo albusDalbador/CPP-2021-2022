@@ -4,9 +4,9 @@
 class Element
 {
 private:
-
     Element *next;
     char *name;
+    
 public:
     //zwraca wartosc prywatnej zmiennej name
     char *getName();
