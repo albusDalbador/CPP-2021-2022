@@ -39,30 +39,32 @@ int main()
 
     std::cout << "----------------------" << std::endl;
 
-    MyText * text = initMyText("Tekst_1");
+    MyText * text = initMyText((char*)"Tekst_1");
     if (empty(text))
     {
         std::cout << text ->name << " jest pusty." << std::endl;
         printStr(getStr(text));
-        MyText * text = initMyText("Tekst_1");
+        MyText * text = initMyText((char*)"Tekst_1");
 
         if (empty(text))
         {
             std::cout << text ->name << " jest pusty." << std::endl;
             printStr(getStr(text));
         }
+        clear(text);
+        delete text;
     } 
 
     
     std::cout << "----------------------" << std::endl;
 
     
-    append(text, "Ala"); 
+    append(text, (char *)"Ala"); 
     printStr(getStr(text) );
     print(text);
     std::cout << "rozmiar(text) = " << size(text) << std::endl;
 
-    append(append(text, " ma"), " kota");
+    append(append(text, (char*)" ma"), (char*)" kota");
     print(text);
     std::cout << "rozmiar(text) = " << size(text) << std::endl;
     
@@ -73,13 +75,13 @@ int main()
     erase(text, 4, 7);  // Usuwa trzy znaki: od 4 (włącznie) do 7 (bez 7)
     print(text);
     std::cout << "rozmiar(text) = " << size(text) << std::endl;
-    insert(text, 4,"ma psa i ");
+    insert(text, 4,(char*)"ma psa i ");
     print(text); 
     std::cout << "rozmiar(text) = " << size(text) << std::endl;
     std::cout << "----------------------" << std::endl;
 
 #ifndef BASIC
-    MyText * copy = initMyText("Tekst_2", text);
+    MyText * copy = initMyText((char *)"Tekst_2", text);
     print(copy);
     modify(copy, std::toupper);
     print(copy);
@@ -97,13 +99,13 @@ int main()
 
     clear(text);
 
-// #ifndef BASIC
-//     std::cout << "I jeszcze raz... Dla pewnosci." << std::endl;
-//     clear(copy);
-//     delete copy;
-// #endif
+#ifndef BASIC
+    std::cout << "I jeszcze raz... Dla pewnosci." << std::endl;
+    clear(copy);
+    delete copy;
+#endif
 
-//   delete text;
+  delete text;
 }
 
 

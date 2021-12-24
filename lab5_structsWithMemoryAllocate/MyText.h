@@ -4,6 +4,7 @@
 struct MyText {
     char *text;
     char *name;
+ 
 };
 
 //zmienia podany symbol na uppercase, w przypadku, gdy przekazano lowercase i odwrotnie
@@ -33,8 +34,6 @@ MyText *initMyText(char*,MyText *);
 //funkcja pomocnicza do kopiowania ciagu znakow, prechowywanych pod adresem "src" do "dst"
 void copyStr(char*,char*);
 
-//funkcja pomocnicza, zwracajaca dlugosc ciagu znakow
-int getStringLen(char *);
 
 //zwraca rozmiar (w bajtach) calej struktury
 int size(MyText *);

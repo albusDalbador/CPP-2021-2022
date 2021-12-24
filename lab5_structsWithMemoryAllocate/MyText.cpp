@@ -2,7 +2,6 @@
 #include <iostream>
 #include <cstring>
 
- 
 
 int up2low_low2up(int symbol) {
     if ((char)symbol == ' ') return ' ';
@@ -15,15 +14,22 @@ bool empty(MyText *item) {
 
 void erase (MyText *item, int begin, int end) {
     if (item->text) {
-        char *after = new char[getStringLen(item->text) - end + 1];
+        std::cout << item->text << "\n";
+
+        char *after = new char[strlen(item->text) - end + 1];
         char *before = new char[begin];
         
         strncpy(before,item->text,begin);
         strcpy(after,item->text + end);
 
-        item->text = new char[getStringLen(item->text) - end + begin];
+        int stepLength = strlen(item->text);
+        
+        delete [] item->text;
+
+        item->text = new char[stepLength - end + begin + 1];
 
         strcpy(item->text,before);
+
         strcpy(item->text + begin,after);
 
         delete [] after;
@@ -35,21 +41,21 @@ void erase (MyText *item, int begin, int end) {
 
 void insert (MyText *item, int pos, char *pattern) {
     if (item->text) {
-        if (getStringLen(item->text) >= pos) {
+        if (strlen(item->text) >= pos) {
             
             char *before = new char[pos];
-            char *after =new char[getStringLen(item->text) - pos];
+            char *after =new char[strlen(item->text) - pos];
 
             strncpy(before,item->text,pos);
             strcpy(after,item->text+pos);
 
             delete [] item->text;
 
-            item->text = new char[getStringLen(item->text) + getStringLen(pattern)];
+            item->text = new char[strlen(item->text) + strlen(pattern)];
 
             strcpy(item->text,before);
             strcpy(item->text+pos,pattern);
-            strcpy(item->text + pos + getStringLen(pattern) , after);
+            strcpy(item->text + pos + strlen(pattern) , after);
 
             delete [] before;
             delete [] after;
@@ -72,27 +78,27 @@ MyText *initMyText(char *newName) {
 }
 
 MyText *initMyText(char *newName, MyText *oldItem) {
-    // MyText *newItem = new MyText;
+    MyText *newItem = new MyText;
 
-    // newItem->text = NULL;
-    // newItem->name = NULL;
+    newItem->text = NULL;
+    newItem->name = NULL;
 
-    // newItem->name = new char [getStringLen(newName) + 1];
+    newItem->name = new char [strlen(newName) + 1];
     
-    // strcpy( newItem->name,newName);
+    strcpy( newItem->name,newName);
 
-    // if (oldItem->text) {
-    //     newItem->text = new char[getStringLen(oldItem->text)];
+    if (oldItem->text) {
+        newItem->text = new char[strlen(oldItem->text)];
 
-    //     strcpy(newItem->text,oldItem->text);
-    // }
+        strcpy(newItem->text,oldItem->text);
+    }
 
-    // return newItem;
+    return newItem;
 }
 
 void modify(MyText *item, int (*func)(int)) {
     if (item->text) {
-        for (int i = 0; i < getStringLen(item->text); i++) {
+        for (int i = 0; i < strlen(item->text); i++) {
             item->text[i] = func(item->text[i]);
         }
     }
@@ -118,22 +124,22 @@ char *getStr(MyText *item) {
 MyText *append(MyText *item, char *pattern) {
     
     if (item->text){
-        char *step = new char[getStringLen(item->text) + 1];
+        char *step = new char[strlen(item->text) + 1];
         strcpy(step,item->text);
 
         delete [] item->text;
 
-        item->text = new char [getStringLen(item->text) + getStringLen(pattern) + 1];
+        item->text = new char [strlen(item->text) + strlen(pattern) + 1];
 
         strcpy(item->text,step);
-        strcpy(item->text + getStringLen(item->text), pattern);
+        strcpy(item->text + strlen(item->text), pattern);
 
         delete [] step;
     }
     else {
         // delete [] item->text;
 
-        item->text = new char [getStringLen(pattern) + 1];
+        item->text = new char [strlen(pattern) + 1];
 
         strcpy(item->text,pattern);
     }
@@ -143,7 +149,7 @@ MyText *append(MyText *item, char *pattern) {
 
 void setChar(MyText *item,int pos, char symbol) {
     if (item->text) {
-        if (getStringLen(item->text) >= pos) {
+        if ((int)strlen(item->text) >= pos) {
             item->text[pos] = symbol;
         } else {
             std::cout << "index is out the range\n";
@@ -156,26 +162,21 @@ void setChar(MyText *item,int pos, char symbol) {
 int size(MyText *item) {
 
     if (item->text) {
-        return getStringLen(item->text);
+        return strlen(item->text);
     }
 
     return 0;
 }
 
-int getStringLen(char *str) {
-    int result = 0;
-
-    while(*str++) {
-        result ++;
-    } 
-
-    return result;
-}
-
 void clear(MyText *item) {
     if (item->text)
     delete [] item->text;
+    item->text = nullptr;
+
     if (item->name)
     delete [] item-> name;
-    delete item;
+    item->name = nullptr;
+
+    // delete item;
+    // item = NULL;
 }
