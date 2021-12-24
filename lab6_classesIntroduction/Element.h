@@ -6,7 +6,7 @@ class Element
 private:
     Element *next;
     char *name;
-    
+
 public:
     //zwraca wartosc prywatnej zmiennej name
     char *getName();
@@ -29,8 +29,6 @@ public:
     //konstruktor, ktory ustala nazwe na  przekazana wartoscia
     Element(char *);
 
-    //domyslny destruktor
-    ~Element();
 };
  
 

@@ -34,6 +34,7 @@ int main() {
     list1.append((char*)"Beata");
     list1.append((char*)"Maria");
 
+
     const MyList* ptr1 = &list1;
     std::cout << "Pierwszy: " << ptr1->getHead()-> getName() << std::endl;
     std::cout << "Ostatni: ";

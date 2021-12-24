@@ -12,20 +12,20 @@ MyList::MyList(char *name) {
     head = nullptr;
     tail = nullptr;
 
-    listName = new char[strlen(name)];
+    listName = new char[strlen(name) + 1];
 
     strcpy(listName,name);
 }
 
 MyList::~MyList(){
-    std::cout << "Destruktor MyList: " << this->getName() << std::endl;
-
+    std::cout << "Destruktor MyList: " << listName << std::endl;
+    
+    this->clearList();
     delete [] listName;
+
 }
 
 void MyList::append(Element *elem) {
-    // Element *step = this->tail;
-
     elem->setNext(nullptr);
 
     if (this->tail)
@@ -82,9 +82,12 @@ bool MyList::isEmpty() const {
 void MyList::removeFirst() {
     Element *step = this->head;
 
-    this->head = this->head->getNext();
+    if (step) {
+        this->head = this->head->getNext();
 
-    step->~Element();
+        delete [] step->getName();
+        delete step;
+    }
 }
 
 void MyList::clearList() {
@@ -93,14 +96,13 @@ void MyList::clearList() {
             this->removeFirst();
         }
     } else {
-        std::cout << "list is already empty\n";
+        // std::cout << "list is already empty\n";
     }
 }
 
 
 //nonmember functions
 
-//funkcja wypisuje cala liste razem z nazwa
 void print(const MyList *list) {
     std::cout << list->getName() << " = [" ;
 
