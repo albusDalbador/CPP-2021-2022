@@ -1,6 +1,6 @@
 CXX = g++
 EXEC = main
-CXXFLAGS = -std=c++14 -Wall -pedantic -DEKSTRA
+CXXFLAGS = -std=c++14 -Wall -pedantic #-DEKSTRA
 SRC = $(wildcard *.cpp)
 OBJS = $(SRC:.cpp=.o)
 

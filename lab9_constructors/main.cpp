@@ -67,7 +67,7 @@ int main() {
   // nowy2.fullPrint();
 
 // Zadanie dodatkowe, jeśli starczy czasu albo do domu
-#ifdef EKSTRA
+#ifndef EKSTRA
    std::cout << "\n****** Etap EKSTRA *****\n";
    std::cout << "compareX="<<compareX(poznan,krakow) << " compareY=" << compareY(poznan,krakow) << std::endl;
    directions(poznan,krakow,compareX);//compareX, compareY to wskaźniki funkcyjne
