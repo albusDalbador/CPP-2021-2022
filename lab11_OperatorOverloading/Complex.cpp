@@ -9,8 +9,6 @@ void Complex::operator=(double num) {
 }
 
 
-
-
 void Complex::print(std::string name) const {
     std::cout << name;
 

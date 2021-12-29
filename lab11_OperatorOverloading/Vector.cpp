@@ -1,5 +1,5 @@
 #include "Vector.h"
- 
+ #include "Complex.h"
 
 double operator*(const Vector&first, const Vector&second) {
     double result = 0;
@@ -12,11 +12,21 @@ double operator*(const Vector&first, const Vector&second) {
 }
 
 Vector operator+(const Vector&first,const Vector&second) {
-    Vector result(first._size);
 
-    for (int i =0 ; i < first._size; i++) {
-        result.values[i] += first.values[i] + second.values[i];
+    int resultSize = first._size > second._size ? first._size : second._size;
+
+    Vector result(resultSize);
+
+    int stopSize = first._size < second._size ? first._size : second._size;
+
+    int iterator = 0;
+    for (; iterator < stopSize; iterator++) {
+        result.values[iterator] += first.values[iterator] + second.values[iterator];
     }
+
+    while (iterator < first._size) result.values[iterator] = first.values[iterator++];
+
+    while (iterator < second._size) result.values[iterator] = second.values[iterator++];
 
     return result;
 }
@@ -25,8 +35,36 @@ double & Vector::operator[](int index) {
     return this->values[index];
 }
 
+void Vector::operator=(Complex complex) {
+
+    this->values = new double[2];
+
+    this->values[0] = complex._re;
+    this->values[1] = complex._im;
+}
+
+void Vector::operator=(Vector vec) {
+    this->_size = vec._size;
+
+    delete [] this->values;
+    this->values = new double[vec._size];
+
+    for (int i = 0; i < _size; i++) {
+        this->values[i] = vec.values[i];
+    }
+}
+
+
+
 Vector::operator double() const {
     return this->norm();
+}
+
+Vector::Vector(Complex complex) : _size(2) {
+    this->values = new double[2];
+
+    this->values[0] = complex._re;
+    this->values[1] = complex._im;
 }
 
 Vector::Vector(int size) : _size(size) {
@@ -56,7 +94,10 @@ Vector::Vector(const Vector &oldItem) {
 }
 
 Vector::~Vector() {
-    delete [] values;
+    // if (values) {
+        delete [] values;
+    //     values = nullptr;
+    // }
 }
 
 

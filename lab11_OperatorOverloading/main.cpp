@@ -90,12 +90,13 @@ int main() {
 // //////////////////////////////////////////////////////
 #ifndef BASIC  // można komentować pojedyncze linie
   std::cout << "\n*** WEKTOR I ZESPOLONE ***"<< std::endl;
-  // V2 = static_cast<Vector>(Complex(3.5)) + V3;
-// 	V2.print("[3.5] + v3 = ");
-//   const Vector  V5 = Z1 + Z3;
-//   V5.print("V5 = ");
-//   V5[1]=1.5;
-//   V5.print("V5 = ");
+  //V2 = static_cast<Vector>(Complex(3.5)); + V3;
+  // V4 = V1 + V3;
+	// V4.print("[3.5] + v3 = ");
+  // const Vector V5 = Z1 + Z3;
+  // V5.print("V5 = ");
+  // V5[1]=1.5;
+  // V5.print("V5 = ");
 //   V4 = Complex(3.5,2.) + Z3;
 //   V4.print("V4 = ");
 //   V4 = Vector(std::move(V2));

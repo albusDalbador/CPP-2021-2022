@@ -4,6 +4,8 @@
 #include <iostream>
 #include <math.h>
 
+class Complex;
+
 class Vector{
     //zaprzyjazniony operator mnozenia, ktory mnozy po kolei wspolrzedne wektora
     friend double operator*(const Vector&, const Vector&);
@@ -24,6 +26,10 @@ class Vector{
         //operator rzutowania na typ double
         operator double() const;
 
+        void operator=(Complex);
+        void operator=(Vector);
+
+        Vector(Complex);
         //konstructor inicujacy tablice values o podanym rozmiarze, wypelniona zerami
         explicit Vector(int);
         //konstruktor inicujacy wektor o dwoch wspolrzednych

@@ -8,6 +8,10 @@ class Complex {
     //zaprzyjazniony operator dodawania, ktory zwraca obiekt klasy Complex
     friend Complex operator+(const Complex&,const Complex&);
 
+
+    friend class Vector;
+
+
     private:
         double _re;
         double _im;
@@ -15,6 +19,7 @@ class Complex {
     public:
         //przeladowanie operatora przypisania, pozwalajaca przypisywac wartosci typu double do obiektu klasy
         void operator=(double);
+
 
         //konstruktor, wykorzystany do rzutowania z klasy Vector
         explicit Complex(Vector);
