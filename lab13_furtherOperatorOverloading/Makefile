@@ -1,10 +1,10 @@
 CXX = g++
 EXEC = main
-CXXFLAGS = $(flag) -std=c++14 -Wall -pedantic -DBASIC
+CXXFLAGS = $(flag) -std=c++14 -Wall -pedantic #-DBASIC
 SRC = $(wildcard *.cpp)
 OBJS = $(SRC:.cpp=.o)
 
-all: $(EXEC) run clear
+all: clean $(EXEC) run 
 
 $(EXEC): $(OBJS)
 	$(CXX) $^ -o $@
