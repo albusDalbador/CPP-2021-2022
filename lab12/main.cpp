@@ -63,7 +63,7 @@ int main ()
   f3 = f5;
   f3 *= 4; // to samo co f3*= static_cast<Fraction>(4);
 
-  cout << "3*" << f2 <<" = " << 3*f2 << endl; 
+  // cout << "3*" << f2 <<" = " << 3*f2 << endl; 
   cout << f1 << " + " << f2 <<" = " << f1+f2 << endl;
  
   f3 = f2 - f4;
@@ -71,8 +71,8 @@ int main ()
   cout << "f3 = " << f2-f4 <<" - (-2) = " << f3 << endl; 
   cout << "f3 = " << f2-f4 <<" - (-2) = " << static_cast<double>(f3) << endl;
 
-  f3 = 1 + f3;
-  cout << "f3 = " << "1 + " << f3 <<" = " << 1+f3 << endl; 
+  // f3 = 1 + f3;
+  // cout << "f3 = " << "1 + " << f3 <<" = " << 1+f3 << endl; 
 
   f3 = -f2;
   cout << "f3 = -f2   " << f3 << endl;
@@ -82,15 +82,15 @@ int main ()
   cout << (f2 == -f3 ? "f2 == -f3" : "f2 != -f3") << endl;
  
 #ifndef BASIC
-  cout << "********** Sortowanie ulamkow *************" << endl;
+  // cout << "********** Sortowanie ulamkow *************" << endl;
 
-  FVector vec {f1*f2}; // zalecane skorzystanie z std::vector
-  vec += Fraction(3, -9);
-  vec += f2; //dodanie elementu
-  vec += f2 + f1;
-  cout << "Przed posortowaniem: " << vec;
-  vec.sort();
-  cout << "Po posortowaniu: " << vec;
+  // FVector vec {f1*f2}; // zalecane skorzystanie z std::vector
+  // vec += Fraction(3, -9);
+  // vec += f2; //dodanie elementu
+  // vec += f2 + f1;
+  // cout << "Przed posortowaniem: " << vec;
+  // vec.sort();
+  // cout << "Po posortowaniu: " << vec;
 #endif
 
 return 0;

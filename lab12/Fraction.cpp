@@ -1,50 +1,89 @@
 #include "Fraction.h"
 
-std::ostream &operator<<(std::ostream &stream, Fraction &frac) {
-    return stream << frac._meter << "/" << frac._denominator;
+//constructors
+Fraction::Fraction(int x,int y) {
+    int reduct = std::gcd(x,y);
+
+    if (x < 0 && y < 0) {
+        _meter = -x / reduct;
+        _delimeter = -y / reduct;
+    } else {
+        _meter = x / reduct;
+        _delimeter = y / reduct;
+    }
 }
 
-Fraction::operator double() const {
-    return (double)this->_meter / (double)this->_denominator;
+Fraction::Fraction(int x) : _meter(x), _delimeter(1) {}
+
+
+//operators
+std::ostream& operator<<(std::ostream &os, const Fraction &frac) {
+    if (frac._meter < 0 || frac._delimeter < 0) {
+        os << "-" << abs(frac._meter);
+        if (frac._delimeter != 1)  os << "/" << abs(frac._delimeter);
+    } else {
+        os << abs(frac._meter);
+        if (frac._delimeter != 1) os << "/" << frac._delimeter;
+    }
+    
+    return os;
 }
 
-void Fraction::operator*(const Fraction &frac) {
-    this->_meter = this->_meter * frac.getMeter();
-    this->_denominator = this->_denominator * frac.getDenominator();
-}
 
-void Fraction::operator=(const Fraction &frac) {
-    this->_meter = frac.getMeter();
-    this->_denominator = frac.getDenominator();
+Fraction::operator double() {
+    return (double)this->_meter / (double)this->_delimeter;
 }
 
 
-
-void Fraction::Licznik(int l) const{
-    const_cast<Fraction*>(this)->_meter = l; 
+Fraction Fraction::operator*(const Fraction &frac) const {
+    return Fraction(this->_meter * frac._meter, this->_delimeter * frac._delimeter);
 }
 
-void Fraction::Mianownik(int a) {
-    this->_denominator = a == 0 ? 1 : a;
+
+void Fraction::operator*=(const Fraction &frac) {
+    this->_meter *= frac._meter;
+    this->_delimeter *= frac._delimeter;
 }
 
-Fraction Pomnoz(Fraction first, Fraction second) {
 
-    return Fraction(first.getMeter() * second.getMeter(), first.getDenominator() * second.getDenominator());
+Fraction Fraction::operator+(const Fraction &frac) const {
+    int lowest = std::lcm(frac._delimeter,this->_delimeter);
+
+    return Fraction(this->_meter *  lowest/this->_delimeter + frac._meter * lowest/frac._delimeter, lowest);
 }
 
-void Fraction::Print(std::string str) const {
-    std::cout << str;
 
-    if (_meter == 0 ) std::cout << 0;
-    else if (_denominator == 0) std::cout << _meter;
-    else std::cout << _meter << "/" << _denominator;
+Fraction Fraction::operator-(const Fraction &frac) const {
+    int lowest = std::lcm(frac._delimeter,this->_delimeter);
 
-    std::cout << "\n";
+    return Fraction(this->_meter *  lowest/this->_delimeter - frac._meter * lowest/frac._delimeter, lowest);
 }
 
-void Fraction::Set(const Fraction &item) const{
-    const_cast<Fraction *>(this)->_meter = item.getMeter();
-    const_cast<Fraction *>(this)->_denominator = item.getDenominator();
+
+void Fraction::operator-=(const Fraction &frac)  {
+    int lowest = std::lcm(frac._delimeter,this->_delimeter);
+
+    this->_meter = this->_meter *  lowest/this->_delimeter - frac._meter * lowest/frac._delimeter;
+
+    this->_delimeter = lowest;
+
+    //the same reduction as in constructor
+    int greatest = std::gcd(_delimeter,_meter);
+    _delimeter = _delimeter / greatest;
+    _meter = _meter /greatest;
 }
 
+
+Fraction Fraction::operator-() const {
+    // this->_meter = -this->_meter;
+    if (this->_meter < 0 || this->_delimeter < 0) {
+        return Fraction(abs(_delimeter),abs(_meter));
+    } else {
+        return Fraction(-_meter,_delimeter);
+    }
+}
+
+
+bool Fraction::operator==(Fraction frac) const {
+    return (this->_meter == frac._meter) && (this->_delimeter == frac._delimeter);
+}

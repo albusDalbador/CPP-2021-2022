@@ -1,62 +1,59 @@
-#ifndef _WYMIERNE_H_
-#define _WYMIERNE_H_
-
-
-#include <iostream>
-#include <string>
 #include <math.h>
-#include <algorithm>
+// #include <algorithm>
+#include <numeric>
+#include <iostream>
 
-class Fraction  {
+class Fraction {
+
+    friend std::ostream& operator<<(std::ostream&,const Fraction&);
+
 
     private:
         int _meter;
-        int _denominator;
+        int _delimeter;
 
     public:
+        explicit operator double();
 
-        friend std::ostream &operator<<(std::ostream& ,Fraction&);
+        Fraction operator*(const Fraction &) const;
 
-        explicit operator double() const;
-        void operator*(const Fraction&);
-        void operator=(const Fraction&);
+        void operator*=(const Fraction &);
 
-        Fraction ();
-        explicit Fraction (int);
-        Fraction (int,int);
+        Fraction operator+(const Fraction &) const;
 
-        //const_cast usage here
-        void Licznik(int) const;
-        void Mianownik(int);
-        void Print(std::string) const;
-        void Set(const Fraction &) const ;
+        Fraction operator-(const Fraction &) const;
+
+        void operator-=(const Fraction &);
+
+        Fraction operator-() const;
+
+        bool operator==(Fraction) const;
 
 
-        int getMeter() const;
-        int getDenominator() const;
-
+        Fraction(int,int);
+        Fraction(int);
 };
 
-inline Fraction :: Fraction () : _meter(0) , _denominator(1) {}
-
-inline Fraction :: Fraction (int a) : _meter(a), _denominator(1) {}
-
-inline Fraction :: Fraction (int a, int b) : _meter(a), _denominator(b) {}
-
-//non-member declaration Fraction  Pomnoz Fraction );
-
-// Fraction operator*(Fraction &first,Fraction &second) {
-//     return Fraction(first.getMeter() * second.getMeter(), first.getDenominator() * second.getDenominator());
-// }
-
-//getters definition
-inline int Fraction ::getMeter() const {
-    return _meter;
-}
-
-inline int Fraction ::getDenominator()const{
-    return _denominator;
-}
+// inline Fraction::Fraction(int i) : _meter(i), _delimeter(1) {}
 
 
-#endif
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
